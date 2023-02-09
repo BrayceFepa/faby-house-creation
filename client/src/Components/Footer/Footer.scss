@@ -1,0 +1,70 @@
+@use "../../scss/" as *;
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    background: $main-color;
+    flex-flow: column;
+    padding: 3rem 5%;
+    gap: 4rem;
+
+    .top{
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+
+        .box{
+            flex-basis: 23%;
+            h4{
+                color: $white;
+                font-size: 1.7rem;
+                margin-bottom: .4rem;
+            }
+
+            li{
+                color: $white;
+                font-size: 1.3rem;
+                margin-top: 0.3rem;
+                cursor: pointer;
+                list-style: none;
+            }
+
+            p{
+                color: $white;
+                font-size: 1.2rem;
+            }
+            span{
+                display: block;
+                color: $white;
+                font-size: 1.3rem;
+                margin-top: 0.3rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .bottom{
+        .payments{
+            display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h4{
+                    color: $white;
+                    font-size: 2rem;
+                    flex: 1;
+                }
+
+                .payment-pic{
+                    height: 10rem;
+                    flex: 1;
+
+                    img{
+                        height: 100%;
+                        width: 100%;
+                        object-fit: contain;
+                    }
+                }
+        }
+    }
+}

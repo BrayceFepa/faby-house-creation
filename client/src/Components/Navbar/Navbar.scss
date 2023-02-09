@@ -1,0 +1,62 @@
+@use "../../scss/" as *;
+
+.navbar{
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $main-color;
+
+    .logo{
+        height: 5rem;
+        width: 5rem;
+
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .navbar-menu{
+        display: flex;
+        gap: 3.5rem;
+
+        .item{
+            
+            a{
+                font-size: 1.4rem;
+                    color: $white;
+
+                    &:hover{
+                        color: $gold-color;
+                    }
+            }
+        }
+    }
+
+    .navbar-icons{
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+
+        .icon{
+
+            svg{
+                font-size: 1.7rem;
+                cursor: pointer;
+
+                path{
+                    color: $white;
+                }
+
+                circle{
+                    color: $white;
+                }
+                line{
+                    color: $white;
+                }
+            }
+        }
+    }
+}
