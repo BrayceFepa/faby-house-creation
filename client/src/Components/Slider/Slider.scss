@@ -1,0 +1,89 @@
+@use "../../scss/" as *;
+
+.slider{
+    height: 100vh;
+    background: $gray-bg;
+    overflow: hidden;
+    position: relative;
+    
+
+    .container{
+        width: 300vw;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        transition: all 1s ease;
+
+        .slide{
+            padding: 2rem 10rem;
+            width: 100vw;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15rem;
+
+            .image{
+                flex: 1;
+                height: 100%;
+
+                img{
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .txt{
+                flex: 2;
+                display: flex;
+                justify-content: center;
+                flex-flow: column;
+                align-items: center;
+                gap: 2rem;
+
+                span{
+                    text-align: center;
+                    font-size: 6rem;
+                    color: $main-color;
+                    font-weight: bolder;
+                    text-transform: uppercase;
+                }
+            }
+            .txt span:nth-child(2){
+                color: $gold-color;
+                font-size: 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                svg{
+                    font-size: 2rem;
+                    path{
+                        color: $gold-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .icons{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 4rem;
+
+        svg{
+            font-size: 3rem;
+            cursor: pointer;
+            
+            path{
+                color: $main-color;
+            }
+        }
+    }
+}

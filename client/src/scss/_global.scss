@@ -2,6 +2,8 @@
 
 html{
     font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 15rem;
 }
 body{
     overflow-x:hidden;
@@ -13,5 +15,25 @@ body{
     box-sizing: border-box;
     text-decoration: none;
     text-transform: capitalize;
+    border: none;
+    outline: none;
     color: $black;
+}
+
+.btn{
+    background: $main-color;
+    color: $gold-color;
+    padding: 1rem 1.5rem;
+    border-radius: 1.7rem;
+    cursor: pointer;
+}
+
+.heading{
+    font-size: 4rem;
+    color: $main-color;
+    text-align: center;
+
+    span{
+        color: $gold-color;
+    }
 }

@@ -1,8 +1,15 @@
 import React from 'react';
+import Slider from '../../Components/Slider/Slider';
+
+import "./Home.scss";
+import Products from '../../Components/Products/Products';
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div className='home'>
+      <Slider />
+      <Products/>
+    </div>
   );
 }
 

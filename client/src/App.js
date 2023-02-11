@@ -6,11 +6,15 @@ import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 
 import "../src/scss/_global.scss";
+import Home from "./pages/Home/Home";
+import Product from "./pages/Product/Product";
+import CategoriesBar from "./Components/CategoriesBar/CategoriesBar";
 
 const Layout = () => {
   return (
     <div className="app">
       <Navbar />
+      <CategoriesBar />
       <Outlet />
       <Footer />
     </div>
@@ -24,16 +28,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <span>spna</span>,
+        element: <Home />,
         errorElement: <span>Error</span>,
       },
       {
-        path: "/products/:id",
-        element: <span>product</span>,
-      },
-      {
         path: "/product/:id",
-        element: <span>product id</span>,
+        element: <Product />,
       },
     ],
   },

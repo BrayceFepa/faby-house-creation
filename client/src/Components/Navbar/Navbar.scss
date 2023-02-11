@@ -1,20 +1,25 @@
 @use "../../scss/" as *;
 
 .navbar{
-    padding: 2rem 5%;
+    padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: $main-color;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
 
     .logo{
-        height: 5rem;
-        width: 5rem;
+        height: 6rem;
+        width: 6rem;
 
         img{
             height: 100%;
             width: 100%;
             object-fit: cover;
+            margin: auto;
         }
     }
 
@@ -43,18 +48,27 @@
         .icon{
 
             svg{
-                font-size: 1.7rem;
+                font-size: 2.5rem;
                 cursor: pointer;
 
                 path{
                     color: $white;
+                    &:hover{
+                        color: $gold-color;
+                    }
                 }
 
                 circle{
                     color: $white;
+                    &:hover {
+                            color: $gold-color;
+                        }
                 }
                 line{
                     color: $white;
+                    &:hover {
+                            color: $gold-color;
+                        }
                 }
             }
         }
