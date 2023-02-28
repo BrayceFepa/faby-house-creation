@@ -1,0 +1,89 @@
+@use "../../scss/" as *;
+
+.product{
+    display: flex;
+    gap: 4rem;
+    padding: 2rem 5rem;
+    padding-top: 10rem;
+
+    .left{
+        flex: 1;
+
+        .image{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover; 
+            }
+        }
+    }
+
+    .right{
+        padding-top: 5rem;
+        flex: 1;
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+
+        h2{
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: $main-color;
+        }
+        .price{
+            font-size: 2rem;
+            color: $gold-color;
+            font-weight: bold;
+        }
+        .description{
+            font-size: 1.7rem;
+            color: $black;
+        }
+
+        .quantity{
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            button{
+                cursor: pointer;
+                height: 3.5rem;
+                width: 3.5rem;
+                background: $main-color;
+                font-size: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $gold-color;
+            }
+
+            span{
+                font-size: 2rem;
+            }
+        }
+
+        .add-to-cart{
+            .btn{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                svg{
+                    font-size: 1.7rem;
+                   path{
+                    color: $gold-color;
+                   }
+                }
+            }
+        }
+
+        .info{
+            font-size: 1.2rem;
+        }
+    }
+}
+
+
