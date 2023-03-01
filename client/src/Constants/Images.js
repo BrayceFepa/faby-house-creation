@@ -8,7 +8,7 @@ import crinoline1 from "../assets/images/crinoline-1.jpg";
 import capNigerien from "../assets/images/cap-nigerien.png";
 import crinoline2 from "../assets/images/cap-crinoline.png";
 
-const images = {
+const Images = {
   logo,
   payment,
   slide1,
@@ -20,4 +20,4 @@ const images = {
   crinoline2,
 };
 
-export default images;
+export default Images;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiSearch } from "react-icons/fi";
 import { FaUserAlt } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
@@ -8,9 +8,12 @@ import Images from '../../Constants/Images';
 import { Link } from 'react-router-dom';
 
 import "./Navbar.scss";
+import Cart from '../Cart/Cart';
 
 
 const Navbar = () => {
+
+    const [showCart, setShowCart] = useState(false);
 
     const menus = [
         {
@@ -51,13 +54,15 @@ const Navbar = () => {
               <div className="icon">
                   <FaUserAlt/>
               </div>
-              <div className="icon">
+              <div className="icon" onClick={()=>setShowCart(!showCart)}>
                   <BsFillCartDashFill/>
               </div>
               <div className="icon">
                   <MdLogout/>
               </div>
           </div>
+
+          {showCart && <Cart setShowCart={setShowCart} />}
           
     </div>
   );
