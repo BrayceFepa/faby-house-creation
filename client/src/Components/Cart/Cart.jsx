@@ -46,7 +46,7 @@ const Cart = ({setShowCart}) => {
                           <span className='item_title'>{item.title}</span>
                           <div className="prices">
                               <span className='initial_price'>{qty*item.price} FCFA</span>
-                              <span className='discounted_price'>{item.discountedPrice} FCFA</span>
+                              <span className='discounted_price'>{qty*item.discountedPrice} FCFA</span>
                           </div>
                           <div className="quantity">
                               <div onClick={()=>setQty(prev=> prev === 1 ? 1 : prev - 1)}><AiOutlineMinusCircle /></div>
