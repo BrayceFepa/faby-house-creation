@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FiSearch } from "react-icons/fi";
 import { FaUserAlt } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
@@ -9,11 +9,10 @@ import { Link } from 'react-router-dom';
 
 import "./Navbar.scss";
 import Cart from '../Cart/Cart';
-
+import CartContext from '../../Context/Cart/CartContext';
 
 const Navbar = () => {
 
-    const [showCart, setShowCart] = useState(false);
 
     const menus = [
         {
@@ -33,6 +32,7 @@ const Navbar = () => {
             link: "/blog"
         }
     ];
+    const { cartItems, showCart, showHideCart } = useContext(CartContext);
 
   return (
       <div className='navbar'>
@@ -54,15 +54,16 @@ const Navbar = () => {
               <div className="icon">
                   <FaUserAlt/>
               </div>
-              <div className="icon" onClick={()=>setShowCart(!showCart)}>
-                  <BsFillCartDashFill/>
+              <div className="icon" onClick={()=>showHideCart()}>
+                  <BsFillCartDashFill />
+                  <div className='cart-items'>{cartItems.length}</div>
               </div>
               <div className="icon">
                   <MdLogout/>
               </div>
           </div>
 
-          {showCart && <Cart setShowCart={setShowCart} />}
+          {showCart && <Cart/>}
           
     </div>
   );

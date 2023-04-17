@@ -262,7 +262,7 @@ const Products = () => {
               {data.map(
                 (product) =>
                   product.category === category.title && (
-                    <ProductCard key={product.id} {...product} />
+                    <ProductCard key={product.id} product={product} />
                   )
               )}
             </div>

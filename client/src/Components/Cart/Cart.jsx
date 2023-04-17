@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import "./Cart.scss";
 
 import Images from '../../Constants/Images';
 import { AiFillCloseCircle, AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { BsFillTrashFill, BsWhatsapp } from "react-icons/bs";
+import CartContext from '../../Context/Cart/CartContext';
 
-const Cart = ({setShowCart}) => {
-
-    const [qty, setQty] = useState(1);
+const Cart = () => {
+    
+    const {showHideCart, cartItems, removeItem, handleQuantity} = useContext(CartContext);
 
     const data = [
     {
@@ -32,12 +33,12 @@ const Cart = ({setShowCart}) => {
 
   return (
       <div className='cart'>
-          <div className="close-cart" onClick={()=>setShowCart(false)}>
+          <div className="close-cart" onClick={()=>showHideCart()}>
               <AiFillCloseCircle/>
           </div>
           <h4 className="title">products in your cart</h4>
           <div className="products">
-              {data?.map(item => (
+              {cartItems?.map(item => (
                   <div className="item" key={item.id}>
                       <div className="pic">
                           <img src={item.img} alt="" />
@@ -45,17 +46,17 @@ const Cart = ({setShowCart}) => {
                       <div className="details">
                           <span className='item_title'>{item.title}</span>
                           <div className="prices">
-                              <span className='initial_price'>{qty*item.price} FCFA</span>
-                              <span className='discounted_price'>{qty*item.discountedPrice} FCFA</span>
+                              <span className='initial_price'>{item.price} FCFA</span>
+                              <span className='discounted_price'>{item.discountedPrice} FCFA</span>
                           </div>
                           <div className="quantity">
-                              <div onClick={()=>setQty(prev=> prev === 1 ? 1 : prev - 1)}><AiOutlineMinusCircle /></div>
-                              <span>{qty}</span>
-                              <div onClick={()=>setQty(prev=> prev+1)}><AiOutlinePlusCircle/></div>
+                              <div onClick={()=>handleQuantity(-1, item.id)}><AiOutlineMinusCircle /></div>
+                              <span>{item.quantity}</span>
+                              <div onClick={()=>handleQuantity(11, item.id)}><AiOutlinePlusCircle/></div>
                           </div>
                       </div>
 
-                      <div className="trash">
+                      <div className="trash" onClick={()=>removeItem(item)}>
                           <BsFillTrashFill/>
                       </div>
                   </div>

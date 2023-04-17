@@ -46,6 +46,7 @@
         gap: 3rem;
 
         .icon{
+            position: relative;
 
             svg{
                 font-size: 2.5rem;
@@ -70,6 +71,24 @@
                             color: $gold-color;
                         }
                 }
+            }
+            .cart-items{
+                position: absolute;
+                top: -0.5rem;
+                right: -0.7rem;
+                padding: .5rem;
+                height: 2rem;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 2rem;
+                border-radius: 100%;
+                background-color: $gold-color;
+                color: $main-color;
+                font-weight: bold;
+                font-size: 1.2rem;
+                cursor: pointer;
             }
         }
     }
