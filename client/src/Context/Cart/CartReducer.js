@@ -11,9 +11,7 @@ const CartReducer = (state, action) => {
       return { ...state, showCart: !state.showCart };
     }
     case ADD_TO_CART: {
-      let item = state.cartItems.filter(
-        (elt) => elt.id === action.payload.id
-      )[0];
+      let item = state.cartItems.find((elt) => elt.id === action.payload.id);
       if (!item) {
         return {
           ...state,
@@ -35,34 +33,23 @@ const CartReducer = (state, action) => {
     case REMOVE_ITEM: {
       return {
         ...state,
-        cartItems: state.cartItems.filter((item) => item.id !== action.payload),
+        cartItems: state.cartItems.filter(
+          (item) => item.id !== action.payload.id
+        ),
       };
     }
     case HANDLE_QUANTITY: {
-      let item = state.cartItems.filter(
-        (elt) => elt.id === action.payload.id
-      )[0];
-      if (item && item.quantity >= 1) {
-        item.quantity += 1;
-        return (state.cartItems[item.id] = item);
-      } else {
-        return {
-          ...state,
-          cartItems: state.cartItems.filter((elt) => elt.id !== item.id),
-        };
-      }
-      // let updatedItems = state.cartItems.map((elt) => {
-      //   if (elt.id === action.payload.id && elt.quantity > 0) {
-      //     elt.quantity += action.payload.one;
-      //     return elt;
-      //   } else if (elt.quantity <= 1) {
-      //     return state.cartItems.filter(
-      //       (item) => item.id !== action.payload.id
-      //     );
-      //   }
-      //   return elt;
-      // });
-      // return { ...state, cartItems: updatedItems };
+      let updatedElts = state.cartItems.map((elt) => {
+        if (elt.id === action.payload.id) {
+          return { ...elt, quantity: elt.quantity + action.payload.amount };
+        }
+        return elt;
+      });
+
+      return {
+        ...state,
+        cartItems: updatedElts.filter((elt) => elt.quantity > 0),
+      };
     }
     default:
       return state;

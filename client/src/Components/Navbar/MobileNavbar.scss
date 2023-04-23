@@ -1,0 +1,100 @@
+@use "../../scss/" as *;
+
+.navbar {
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $main-color;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
+
+    .logo {
+        height: 6rem;
+        width: 6rem;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            margin: auto;
+        }
+    }
+
+    .navbar-menu {
+        display: none;
+        gap: 3.5rem;
+
+        .item {
+
+            a {
+                font-size: 1.4rem;
+                color: $white;
+
+                &:hover {
+                    color: $gold-color;
+                }
+            }
+        }
+    }
+
+    .navbar-icons {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+
+        .icon {
+            position: relative;
+
+            svg {
+                font-size: 2.5rem;
+                cursor: pointer;
+
+                path {
+                    color: $white;
+
+                    &:hover {
+                        color: $gold-color;
+                    }
+                }
+
+                circle {
+                    color: $white;
+
+                    &:hover {
+                        color: $gold-color;
+                    }
+                }
+
+                line {
+                    color: $white;
+
+                    &:hover {
+                        color: $gold-color;
+                    }
+                }
+            }
+
+            .cart-items {
+                position: absolute;
+                top: -0.5rem;
+                right: -0.7rem;
+                padding: .5rem;
+                height: 2rem;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 2rem;
+                border-radius: 100%;
+                background-color: $gold-color;
+                color: $main-color;
+                font-weight: bold;
+                font-size: 1.2rem;
+                cursor: pointer;
+            }
+        }
+    }
+}

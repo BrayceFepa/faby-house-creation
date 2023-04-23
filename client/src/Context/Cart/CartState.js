@@ -28,8 +28,8 @@ const CartState = ({ children }) => {
     dispatch({ type: REMOVE_ITEM, payload: id });
   };
 
-  const handleQuantity = (one, id) => {
-    dispatch({ type: HANDLE_QUANTITY, payload: { one: one, id: id } });
+  const handleQuantity = (id, amount) => {
+    dispatch({ type: HANDLE_QUANTITY, payload: { id, amount } });
   };
 
   return (

@@ -50,9 +50,9 @@ const Cart = () => {
                               <span className='discounted_price'>{item.discountedPrice} FCFA</span>
                           </div>
                           <div className="quantity">
-                              <div onClick={()=>handleQuantity(-1, item.id)}><AiOutlineMinusCircle /></div>
+                              <div onClick={()=>handleQuantity(item.id, -1)}><AiOutlineMinusCircle /></div>
                               <span>{item.quantity}</span>
-                              <div onClick={()=>handleQuantity(11, item.id)}><AiOutlinePlusCircle/></div>
+                              <div onClick={()=>handleQuantity(item.id, 1)}><AiOutlinePlusCircle/></div>
                           </div>
                       </div>
 
