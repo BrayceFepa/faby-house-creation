@@ -34,11 +34,11 @@ const Cart = () => {
   return (
       <div className='cart'>
           <div className="close-cart" onClick={()=>showHideCart()}>
-              <AiFillCloseCircle/>
+              <AiFillCloseCircle size={'2.5em'}/>
           </div>
-          <h4 className="title">products in your cart</h4>
-          <div className="products">
-              {cartItems?.map(item => (
+          <h4 className="title">products in your cart ({cartItems?.length})</h4>
+          <div className="products__cart">
+              {cartItems?.length > 0 ? cartItems?.map(item => (
                   <div className="item" key={item.id}>
                       <div className="pic">
                           <img src={item.img} alt="" />
@@ -50,17 +50,19 @@ const Cart = () => {
                               <span className='discounted_price'>{item.discountedPrice} FCFA</span>
                           </div>
                           <div className="quantity">
-                              <div onClick={()=>handleQuantity(item.id, -1)}><AiOutlineMinusCircle /></div>
+                              <div onClick={()=>handleQuantity(item.id, -1)}><AiOutlineMinusCircle size={'2em'} /></div>
                               <span>{item.quantity}</span>
-                              <div onClick={()=>handleQuantity(item.id, 1)}><AiOutlinePlusCircle/></div>
+                              <div onClick={()=>handleQuantity(item.id, 1)}><AiOutlinePlusCircle size={'2em'}/></div>
                           </div>
                       </div>
 
                       <div className="trash" onClick={()=>removeItem(item)}>
-                          <BsFillTrashFill/>
+                          <BsFillTrashFill size={'2em'}/>
                       </div>
                   </div>
-              ))}
+              )) : <div style={{ textAlign: "center" }}>
+              <span style={{ fontWeight: "bold", fontSize: "1.1rem", textAlign: "center" }}>Votre panier est vide pour le moment, cliquez sur le boutton "ajouter au panier" pour le remplir</span>
+              </div>}
           </div>
           
           <div className="checkout">

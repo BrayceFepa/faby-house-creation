@@ -1,17 +1,25 @@
 @use "../../scss/" as *;
 
-.navbar {
-    padding: 1rem 5%;
+.mobile__navbar {
+    padding: .3rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: $main-color;
+    background: $white;
+    border-bottom: .1rem solid rgba(0,0,0,0.09);
     position: fixed;
     z-index: 2;
     left: 0;
     right: 0;
 
+    @media(min-width: 768px){
+        display: none;
+    }
+
     .logo {
+        display: flex;
+        align-items: center;
+        .pic{
         height: 6rem;
         width: 6rem;
 
@@ -21,17 +29,53 @@
             object-fit: cover;
             margin: auto;
         }
+                }
+                .title{
+                    text-transform: uppercase;
+                    color: $main-color;
+                    font-size: 1.3rem;
+                }
     }
 
+    
+
+    .close{
+        position: absolute;
+        top: 2rem;
+        right: 1.5rem;
+        svg{
+            path{
+                color: #fd0404;
+                // font-size: 2rem;
+            }
+        }
+    }
+.navbar-menu.active{
+    right: 0;
+}
     .navbar-menu {
-        display: none;
-        gap: 3.5rem;
+        position: absolute;
+        width: 25rem;
+        gap: 1.5rem;
+        right: -120%;
+        top: 0;
+        display: flex;
+        flex-flow: column;
+        align-items: start;
+        justify-content: start;
+        background: $white;
+        height: 100vh;
+        padding: 5rem 2rem 1rem;
+        z-index: 10;
+        box-shadow: -.3rem .2rem 1rem rgba($color: #000000, $alpha: 0.07);
+        transition: all ease .3s;
 
         .item {
 
             a {
-                font-size: 1.4rem;
-                color: $white;
+                font-size: 1.7rem;
+                color: $black;
+                font-weight: bold;
 
                 &:hover {
                     color: $gold-color;
@@ -43,7 +87,7 @@
     .navbar-icons {
         display: flex;
         align-items: center;
-        gap: 3rem;
+        gap: 2rem;
 
         .icon {
             position: relative;
@@ -53,7 +97,7 @@
                 cursor: pointer;
 
                 path {
-                    color: $white;
+                    color: $main-color;
 
                     &:hover {
                         color: $gold-color;
@@ -61,7 +105,7 @@
                 }
 
                 circle {
-                    color: $white;
+                    color: $main-color;
 
                     &:hover {
                         color: $gold-color;
@@ -69,7 +113,7 @@
                 }
 
                 line {
-                    color: $white;
+                    color: $main-color;
 
                     &:hover {
                         color: $gold-color;

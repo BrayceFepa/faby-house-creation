@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import "./Navbar.scss";
 import Cart from '../Cart/Cart';
 import CartContext from '../../Context/Cart/CartContext';
+import CategoriesBar from '../CategoriesBar/CategoriesBar';
 
 const Navbar = () => {
 
@@ -35,6 +36,7 @@ const Navbar = () => {
     const { cartItems, showCart, showHideCart } = useContext(CartContext);
 
   return (
+      <>
       <div className='navbar'>
           
           <div className="logo">
@@ -59,13 +61,17 @@ const Navbar = () => {
                   <div className='cart-items'>{cartItems.length}</div>
               </div>
               <div className="icon">
-                  <MdLogout/>
+                      <MdLogout />
+                      
               </div>
           </div>
 
           {showCart && <Cart/>}
           
-    </div>
+          </div>
+          
+          <CategoriesBar/>
+      </>
   );
 }
 

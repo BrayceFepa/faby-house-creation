@@ -9,13 +9,16 @@ import "../src/scss/_global.scss";
 import Home from "./pages/Home/Home";
 import Product from "./pages/Product/Product";
 import CategoriesBar from "./Components/CategoriesBar/CategoriesBar";
+import MobileNavbar from "./Components/Navbar/MobileNavbar";
+import MobileFooter from "./Components/Footer/MobileFooter";
 
 const Layout = () => {
   return (
     <div className="app">
       <Navbar />
-      <CategoriesBar />
+      <MobileNavbar />
       <Outlet />
+      <MobileFooter />
       <Footer />
     </div>
   );

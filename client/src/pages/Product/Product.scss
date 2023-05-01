@@ -6,6 +6,10 @@
     padding: 2rem 5rem;
     padding-top: 10rem;
 
+    @include mobile{
+        flex-flow: column;
+    }
+
     .left{
         flex: 1;
 

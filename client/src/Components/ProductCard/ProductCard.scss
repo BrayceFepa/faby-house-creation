@@ -2,7 +2,7 @@
 
 .product-card{
     padding: 2rem;
-    border: .1rem solid $gold-color;
+    border: .1rem solid $light-black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,9 +11,17 @@
     background: $white;
     justify-content: space-between;
     position: relative;
+    min-width: 29rem;
+
+    @include mobile{
+        padding: 1rem;
+        gap: 1rem;
+        min-width: 15rem;
+        width: 16.5rem;
+    }
 
     &:hover{
-        border: .1rem solid $main-color;
+        border: .1rem solid $gold-color;
     }
 
     .new{
@@ -25,6 +33,11 @@
         padding: 0.5rem;
         color: $white;
         font-size: 1rem;
+
+        @include mobile{
+            left: 0.7rem;
+            top: 0.7rem;
+        }
     }
 
     .product-pic{
@@ -44,6 +57,9 @@
         font-size: 2rem;
         font-weight: bold;
 
+        @include mobile{
+            font-size: 1.3rem;
+        }
     }
 
     .prices{
@@ -52,11 +68,20 @@
         gap: 1rem;
         font-size: 1.7rem;
         font-weight: bold;
+
+        @include mobile{
+            gap: .8rem;
+            font-size: 1.5rem;
+        }
     }
     .prices span:nth-child(1){
         color: red;
         text-decoration: line-through;
         font-size: 1.5rem;
+
+        @include mobile{
+            font-size: 1.3rem;
+        }
     }
     .prices span:nth-child(2){
         color: $main-color;
@@ -64,23 +89,78 @@
     .buttons{
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
+        justify-content: center;
+
+        @media(min-width: 768px){
+            justify-content: space-between;
+                width: 100%;
+        }
 
         .btn{
-            padding: .7rem 1rem;
-            font-size: 1.1rem;
+            padding: .8rem 1.8rem;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
             gap: .5rem;
             font-weight: 500;
+            border-radius: .7rem;
+            text-transform: uppercase;
+            font-weight: bold;
 
             svg{
-                font-size: 1.5rem;
+                font-weight: bold;
                 path{
                 color: $gold-color;
                 }
             }
+
+            @include mobile{
+                padding: .8rem 1.2rem;
+                    font-size: .9rem;
+            }
+        }
+        .view{
+            padding: .7rem .8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            border-radius: .5rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: .1rem solid $light-black;
+            cursor: pointer;
+
+            
+            @include mobile{
+                display: none;
+            }
+
+            svg{
+                font-weight: bold;
+                
+                path{
+                color: $light-black;
+                }
+                
+
+            }
+
+                        &:hover {
+                            transition: all .3s ease;
+                            border: .1rem solid $main-color;
+                            background-color: $main-color;
+
+                            svg {
+                                    font-weight: bold;
+                            
+                                    path {
+                                        color: $gold-color;
+                                    }
+                            
+                            
+                                }
+                        }
         }
     }
 }

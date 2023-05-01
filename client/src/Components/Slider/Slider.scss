@@ -1,29 +1,40 @@
 @use "../../scss/" as *;
 
-.slider{
+.slider-container{
+    padding-top: 12rem;
     height: 100vh;
-    background: $gray-bg;
+    background: $white;
     overflow: hidden;
     position: relative;
+    width: 100vw;
+
+    @include mobile{
+        padding-top: 8rem;
+    }
+
+    .swiper{
+        width: 95%;
+        height: 100%;
+        position: unset;
+
+        .swiper-slide{
+            background: $white;
+            width: 100%;
+            display: flex;
+            overflow: hidden;
+        }
+    }
     
 
-    .container{
-        width: 300vw;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        transition: all 1s ease;
-
         .slide{
-            padding: 2rem 10rem;
-            width: 100vw;
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 15rem;
 
             .image{
+                padding-left: 1rem;
                 flex: 1;
                 height: 100%;
 
@@ -48,42 +59,57 @@
                     font-weight: bolder;
                     text-transform: uppercase;
                 }
-            }
-            .txt span:nth-child(2){
-                color: $gold-color;
-                font-size: 1.5rem;
-                display: flex;
-                align-items: center;
-                gap: 1rem;
+                .btn{
+                    border-radius: .5rem;
 
-                svg{
-                    font-size: 2rem;
-                    path{
-                        color: $gold-color;
-                    }
+                    color: $gold-color;
+                        font-size: 2rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                    
+                        svg {
+                            font-size: 2rem;
+                    
+                            path {
+                                color: $gold-color;
+                            }
+                        }
                 }
             }
-        }
+           
+        
     }
 
-    .icons{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: 0 4rem;
-
-        svg{
-            font-size: 3rem;
-            cursor: pointer;
-            
-            path{
-                color: $main-color;
-            }
-        }
+    .swiper-button-next{
+        right: 3rem;
+        z-index: 1;
+        color: $white;
+        height: 2rem;
+        width: 2rem;
+        background-color: $main-color;
+        border-radius: 50%;
+        padding: 1rem;
+        border: 1rem solid $main-color;
     }
+        .swiper-button-next::after{
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    .swiper-button-prev{
+        left: 3rem;
+        z-index: 1;
+        color: $white;
+        height: 2rem;
+            width: 2rem;
+            background-color: $main-color;
+            border-radius: 50%;
+            padding: 1rem;
+            border: 1rem solid $main-color;
+    }
+.swiper-button-prev::after{
+    font-size: 2rem;
+    font-weight: bold;
+}
+    
 }

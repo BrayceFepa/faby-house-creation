@@ -1,0 +1,31 @@
+@use "../../scss/" as *;
+
+.mobile__footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5.5rem;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $white;
+    border-top: .1rem solid rgba(0, 0, 0, 0.09);
+    padding: 0 4%;
+
+    @media(min-width: 768px){
+        display: none;
+    }
+
+    .footer-icon{
+        
+
+            svg{
+                path {
+                color: $main-color;
+            }
+        }
+    }
+    
+}

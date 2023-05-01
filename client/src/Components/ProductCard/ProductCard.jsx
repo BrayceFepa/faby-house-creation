@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { BsCart3 } from "react-icons/bs";
 import { BiCommentDetail } from "react-icons/bi";
+import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import CartContext from '../../Context/Cart/CartContext';
 
@@ -24,8 +25,10 @@ const ProductCard = ({product}) => {
           <span >{discountedPrice} FCFA</span>
           </div>
           <div className="buttons">
-              <button type='button' className='btn' onClick={()=>addToCart(product)}><BsCart3/> ajouter au pannier</button>
-              <button type='button' className='btn'><BiCommentDetail/> commenter</button>
+        <button type='button' className='btn' onClick={() => addToCart(product)}><BsCart3 size={'1.5em'} /> ajouter au pannier</button>
+        <Link to={`/product/${id}`}>
+          <button type='button' className='view'><AiOutlineEye size={'1.5em'} /> </button>
+        </Link>
           </div>
     </div>
   );
