@@ -58,6 +58,8 @@ export const getAllProducts = async (req, res) => {
     queryObject.category = { $regex: category, $options: "i" };
   }
 
+  queryObject.status = { $regex: "show", $options: "i" };
+
   const pages = Number(page);
   const limits = Number(limit);
   const skip = (pages - 1) * limit;
@@ -79,5 +81,62 @@ export const getAllProducts = async (req, res) => {
     res.status(500).send({
       message: error.message,
     });
+  }
+};
+
+export const getProductById = async (req, res) => {
+  try {
+    const product = await ProductModel.findById(req.params.id);
+    if (product) {
+      res.status(200).send(product);
+    } else {
+      res.status(404).send({ message: "Product not found" });
+    }
+  } catch (error) {
+    res.status(500).send({
+      message: error.message,
+    });
+  }
+};
+
+export const updateProduct = async (req, res) => {
+  try {
+    const product = await ProductModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res
+      .status(200)
+      .send({ data: product, message: "Product Updated successfully" });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+};
+
+export const updateStatus = async (req, res) => {
+  const newStatus = req.body.status;
+  try {
+    const product = await ProductModel.findById(req.params.id);
+    if (product) {
+      product.status = newStatus;
+      await product.save();
+      res
+        .status(200)
+        .send({ message: `Product set to ${newStatus} status successfully! ` });
+    } else {
+      res.status(404).send({ message: "product doesn't exist" });
+    }
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+};
+
+export const deleteProduct = async (req, res) => {
+  try {
+    await ProductModel.findByIdAndDelete(req.params.id);
+    res.status(200).send({ message: "Product deleted successfully !" });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
   }
 };
