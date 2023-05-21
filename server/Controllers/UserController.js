@@ -32,9 +32,9 @@ export const getUser = async (req, res) => {
 //update a user
 export const updateUser = async (req, res) => {
   const id = req.params.id;
-  const { currentUserId, currentUserAdminStatus, password } = req.body;
+  const { currentUserId, password } = req.body;
 
-  if (id === currentUserId || currentUserAdminStatus) {
+  if (id === currentUserId) {
     try {
       if (password) {
         const salt = await bcrypt.genSalt(10);
@@ -57,16 +57,10 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   const id = req.params.id;
 
-  const { currentUserId, currentUserAdminStatus } = req.body;
-
-  if (currentUserId === id || currentUserAdminStatus) {
-    try {
-      await UserModel.findByIdAndDelete(id);
-      res.status(200).json("Compte supprimé avec succès");
-    } catch (error) {
-      res.status(500).json(error);
-    }
-  } else {
-    res.status(403).json("Vous ne pouvez que supprimer votre propre compte.");
+  try {
+    await UserModel.findByIdAndDelete(id);
+    res.status(200).json("Compte supprimé avec succès");
+  } catch (error) {
+    res.status(500).json(error);
   }
 };

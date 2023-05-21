@@ -5,7 +5,8 @@ import { signinToken, isAuth } from "../Config/auth.js";
 
 //Registering a new user
 export const registerUser = async (req, res) => {
-  const { firstname, lastname, email, password, phonenumber } = req.body;
+  const { firstName, lastName, email, password, phoneNumber, isAdmin } =
+    req.body;
 
   const isAdded = await UserModel.findOne({ email: email });
 
@@ -22,18 +23,13 @@ export const registerUser = async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  if (!firstname || !lastname || !phonenumber || !password) {
+  if (!firstName || !lastName || !phoneNumber || !password) {
     res.status(400).json({
       message: `Tous les champs sont obligatoires !`,
     });
   } else {
-    const newUser = new UserModel({
-      firstName: firstname,
-      lastName: lastname,
-      phoneNumber: phonenumber,
-      email: email,
-      password: hashedPassword,
-    });
+    req.body.password = hashedPassword;
+    const newUser = new UserModel(req.body);
 
     try {
       const savedUser = await newUser.save();

@@ -4,10 +4,12 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import connectDB from "../Config/db.js";
+import { isAuth, isAdmin } from "../Config/auth.js";
 
-import AuthRoute from "../Routes/AuthRoute.js";
-import UserRoute from "../Routes/UserRoute.js";
-import ProductsRoute from "../Routes/ProductsRoute.js";
+import AuthRoute from "../Routes/AuthRoutes.js";
+import UserRoute from "../Routes/UserRoutes.js";
+import ProductsRoute from "../Routes/ProductsRoutes.js";
+import CategoryRoutes from "../Routes/CategoryRoutes.js";
 
 dotenv.config();
 
@@ -24,6 +26,7 @@ app.use(express.json({ limit: "4mb" }));
 app.use("/api/auth", AuthRoute);
 app.use("/api/user", UserRoute);
 app.use("/api/products", ProductsRoute);
+app.use("/api/categories", CategoryRoutes);
 
 app.use((err, req, res, next) => {
   if (res.headersSent) return next(err);
