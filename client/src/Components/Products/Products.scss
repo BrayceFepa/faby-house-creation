@@ -2,13 +2,18 @@
 
 .products{
     margin-top: 5rem;
+    padding: 2rem 5%;
+   
 
     @include mobile{
         margin-top: 3rem;
     }
 
     .products-wrapper{
-        padding: 2rem 4%;
+        display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
 
         @include mobile{
             padding: 1.7rem 2%;
@@ -33,9 +38,8 @@
                     margin-top: 2rem;
                     display: flex;
                     align-items: center;
-                    justify-content: space-between;
                     flex-wrap: wrap;
-                    gap: 2rem;
+                    gap: 1.5rem;
                     width: 100%;
 
                     @include mobile{
