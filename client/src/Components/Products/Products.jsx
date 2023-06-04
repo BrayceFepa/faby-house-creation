@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Category from "../Categories/Category";
 
 import "./Products.scss";
 import images from "../../Constants/Images";
 import ProductCard from "../ProductCard/ProductCard";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts, selectProducts } from "../../redux/reducers/productsReducer";
+import { fetchCategories, fetchCategoryById, selectCategories } from "../../redux/reducers/categoriesReducer";
 
 const Products = () => {
   const data = [
@@ -238,6 +242,32 @@ const Products = () => {
       title: "paille française",
     },
   ];
+
+  const dispatch = useDispatch();
+  const products = useSelector(selectProducts);
+  const categoriesRdx = useSelector(selectCategories);
+  const loading = useSelector((state) => state.products.loading);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+    dispatch(fetchCategories())
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (products) {
+      console.log("products", products);
+    }
+  }, [products])
+  useEffect(() => {
+    if (categoriesRdx) {
+      console.log("categoriesrdx", categoriesRdx)
+    }
+  
+    return () => {
+      
+    }
+  }, [categoriesRdx])
+  
 
   return (
     <div className="products">
