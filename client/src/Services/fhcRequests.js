@@ -1,7 +1,9 @@
 import axios from "axios";
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const instance = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_FHC_API_BASE_URL}`,
+  baseURL: `${process.env.REACT_APP_FHC_API_BASE_URL}`,
   timeout: 500000,
   headers: {
     Accept: "application/json",
