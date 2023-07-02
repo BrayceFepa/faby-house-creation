@@ -9,19 +9,20 @@ import CartContext from '../../Context/Cart/CartContext';
 const Cart = () => {
     
     const { showHideCart, cartItems, removeItem, handleQuantity } = useContext(CartContext); 
-   const orderOnWhatsapp = () => {
-  let orderDetails = "*Hello Faby House Creation, j'aimerai acheter les articles suivants*%0A";
+ const orderOnWhatsapp = () => {
+  let orderDetails = "*Hello Faby House Creation, j'aimerai acheter les articles suivants* <br>";
   let total = 0;
   cartItems.forEach((item) => {
     total += item.quantity * item.discountedPrice;
-    orderDetails += `- ${item.quantity} de ${item.name}, prix : ${item.quantity * item.discountedPrice}CFA%0A`;
+    orderDetails += `- ${item.quantity} de ${item.title}, prix : ${item.quantity * item.discountedPrice}CFA <br>`;
   });
-  orderDetails += `Le total s'élève à : ${total}CFA`;
+  orderDetails += `Le total s'élève à : ${total} CFA`;
   
   const phoneNumber = "+237693267462";
   const encodedMessage = encodeURIComponent(orderDetails);
   window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`);
 }
+
 
     
   return (
