@@ -11,6 +11,7 @@ import Product from "./pages/Product/Product";
 import CategoriesBar from "./Components/CategoriesBar/CategoriesBar";
 import MobileNavbar from "./Components/Navbar/MobileNavbar";
 import MobileFooter from "./Components/Footer/MobileFooter";
+import FetchDataLayout from "./Components/Layouts/FetchDataLayout";
 
 const Layout = () => {
   return (
@@ -45,7 +46,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
-      <RouterProvider router={router} />
+      <FetchDataLayout>
+        <RouterProvider router={router} />
+      </FetchDataLayout>
     </div>
   );
 }

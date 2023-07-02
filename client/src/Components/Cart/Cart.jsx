@@ -8,29 +8,8 @@ import CartContext from '../../Context/Cart/CartContext';
 
 const Cart = () => {
     
-    const {showHideCart, cartItems, removeItem, handleQuantity} = useContext(CartContext);
-
-    const data = [
-    {
-      id: 1,
-      img: Images.pailleFr,
-      title: "paille française",
-      price: 10000,
-      isNew: true,
-      discountedPrice: 8000,
-      category: "foulard nigerian",
-    },
-    {
-      id: 2,
-      img: Images.crinoline1,
-      title: "crinoline noire",
-      price: 10000,
-      isNew: false,
-      discountedPrice: 8000,
-      category: "foulard nigerian",
-    },
-]
-
+    const { showHideCart, cartItems, removeItem, handleQuantity } = useContext(CartContext); 
+    
   return (
       <div className='cart'>
           <div className="close-cart" onClick={()=>showHideCart()}>
@@ -39,20 +18,20 @@ const Cart = () => {
           <h4 className="title">products in your cart ({cartItems?.length})</h4>
           <div className="products__cart">
               {cartItems?.length > 0 ? cartItems?.map(item => (
-                  <div className="item" key={item.id}>
+                  <div className="item" key={item._id}>
                       <div className="pic">
-                          <img src={item.img} alt="" />
+                          <img src={item?.image} alt="" />
                       </div>
                       <div className="details">
-                          <span className='item_title'>{item.title}</span>
+                          <span className='item_title'>{item?.title}</span>
                           <div className="prices">
-                              <span className='initial_price'>{item.price} FCFA</span>
-                              <span className='discounted_price'>{item.discountedPrice} FCFA</span>
+                              <span className='initial_price'>{item?.initialPrice} FCFA</span>
+                              <span className='discounted_price'>{item?.discountedPrice} FCFA</span>
                           </div>
                           <div className="quantity">
-                              <div onClick={()=>handleQuantity(item.id, -1)}><AiOutlineMinusCircle size={'2em'} /></div>
-                              <span>{item.quantity}</span>
-                              <div onClick={()=>handleQuantity(item.id, 1)}><AiOutlinePlusCircle size={'2em'}/></div>
+                              <div onClick={()=>handleQuantity(item._id, -1)}><AiOutlineMinusCircle size={'2em'} /></div>
+                              <span>{item?.quantity}</span>
+                              <div onClick={()=>handleQuantity(item._id, 1)}><AiOutlinePlusCircle size={'2em'}/></div>
                           </div>
                       </div>
 

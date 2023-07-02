@@ -28,27 +28,25 @@ const Slider = () => {
         grabCursor={true}
         modules={[Navigation, Pagination, Autoplay]}
         navigation={true}
-        autoplay={true}
+        pagination={{ 
+          clickable: true,
+         }}
+        autoplay={{ 
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        speed={500}
+        effect="fade"
+        
       >
         <SwiperSlide>
           <div className="slide">
             <div className="image">
-            <img src={images.slide1} alt="" />
-          </div>
-          <div className="txt">
-            <span>Bienvenu chez <br /> FABY HOUSE CREATION</span>
-            <span className="btn">En Savoir plus <BsFillArrowDownCircleFill/></span>
-          </div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div className="slide">
-            <div className="image">
-            <img src={images.slide2} alt="" />
-          </div>
-          <div className="txt">
-            <span>Votre Atelier de Conception de chapeau haut de gamme</span>
+              <picture>
+  <source srcset={images.mobileSlide1} media="(max-width: 768px)"/>
+  <img src={images.slide1} alt="Default Image"/>
+</picture>
+            {/* <img src= alt="" /> */}
           </div>
           </div>
         </SwiperSlide>
@@ -56,10 +54,23 @@ const Slider = () => {
         <SwiperSlide>
           <div className="slide">
             <div className="image">
-            <img src={images.slide3} alt="" />
+              <picture>
+  <source srcset={images.mobileSlide2} media="(max-width: 768px)"/>
+  <img src={images.slide2} alt="Default Image"/>
+</picture>
+            {/* <img src={images.slide2} alt="" /> */}
           </div>
-          <div className="txt">
-            <span>Démarquez-vous avec un style unique et original</span>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div className="slide">
+            <div className="image">
+              <picture>
+  <source srcset={images.mobileSlide3} media="(max-width: 768px)"/>
+  <img src={images.slide3} alt="Default Image"/>
+</picture>
+            {/* <img src={images.slide3} alt="" /> */}
           </div>
           </div>
         </SwiperSlide>

@@ -11,7 +11,7 @@ const CartReducer = (state, action) => {
       return { ...state, showCart: !state.showCart };
     }
     case ADD_TO_CART: {
-      let item = state.cartItems.find((elt) => elt.id === action.payload.id);
+      let item = state.cartItems.find((elt) => elt._id === action.payload._id);
       if (!item) {
         return {
           ...state,
@@ -19,7 +19,7 @@ const CartReducer = (state, action) => {
         };
       } else {
         let updatedElts = state.cartItems.map((elt) => {
-          if (elt.id === item.id) {
+          if (elt._id === item._id) {
             return { ...elt, quantity: elt.quantity + 1 };
           }
           return elt;
@@ -34,13 +34,13 @@ const CartReducer = (state, action) => {
       return {
         ...state,
         cartItems: state.cartItems.filter(
-          (item) => item.id !== action.payload.id
+          (item) => item._id !== action.payload._id
         ),
       };
     }
     case HANDLE_QUANTITY: {
       let updatedElts = state.cartItems.map((elt) => {
-        if (elt.id === action.payload.id) {
+        if (elt._id === action.payload.id) {
           return { ...elt, quantity: elt.quantity + action.payload.amount };
         }
         return elt;
