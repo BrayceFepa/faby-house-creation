@@ -18,7 +18,7 @@ const app = express();
 app.set("trust proxy", 1);
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
+app.use(cors({ origin: true }));
 
 app.use(express.json({ limit: "4mb" }));
 
