@@ -1,7 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import "./Cart.scss";
-
-import Images from '../../Constants/Images';
 import { AiFillCloseCircle, AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { BsFillTrashFill, BsWhatsapp } from "react-icons/bs";
 import CartContext from '../../Context/Cart/CartContext';
@@ -23,11 +21,32 @@ const Cart = () => {
   window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`);
 }
 
+    
+useEffect(() => {
+    const handleClickOutsideCart = (event) => {
+      const cartContainer = document.getElementById('cart-container');
+      if (cartContainer && !cartContainer.contains(event.target)) {
+        showHideCart();
+      }
+    };
+
+    const handleScroll = () => {
+      showHideCart();
+    };
+
+    document.addEventListener('click', handleClickOutsideCart);
+    document.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutsideCart);
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [showHideCart]);
 
 
     
   return (
-      <div className='cart'>
+      <div className='cart' id='cart-container'>
           <div className="close-cart" onClick={()=>showHideCart()}>
               <AiFillCloseCircle size={'2.5em'}/>
           </div>
