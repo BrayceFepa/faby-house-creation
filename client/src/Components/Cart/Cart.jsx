@@ -14,9 +14,9 @@ const Cart = () => {
   let total = 0;
   cartItems.forEach((item) => {
     total += item.quantity * item.discountedPrice;
-    orderDetails += `- ${item.quantity} de ${item.name}, prix : ${item.quantity * item.discountedPrice}%0A`;
+    orderDetails += `- ${item.quantity} de ${item.name}, prix : ${item.quantity * item.discountedPrice}CFA%0A`;
   });
-  orderDetails += `Le total s'élève à : ${total}`;
+  orderDetails += `Le total s'élève à : ${total}CFA`;
   
   const phoneNumber = "+237693267462";
   const encodedMessage = encodeURIComponent(orderDetails);
