@@ -9,6 +9,20 @@ import CartContext from '../../Context/Cart/CartContext';
 const Cart = () => {
     
     const { showHideCart, cartItems, removeItem, handleQuantity } = useContext(CartContext); 
+   const orderOnWhatsapp = () => {
+  let orderDetails = "*Hello Faby House Creation, j'aimerai acheter les articles suivants*%0A";
+  let total = 0;
+  cartItems.forEach((item) => {
+    total += item.quantity * item.discountedPrice;
+    orderDetails += `- ${item.quantity} de ${item.name}, prix : ${item.quantity * item.discountedPrice}%0A`;
+  });
+  orderDetails += `Le total s'élève à : ${total}`;
+  
+  const phoneNumber = "+237693267462";
+  const encodedMessage = encodeURIComponent(orderDetails);
+  window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`);
+}
+
     
   return (
       <div className='cart'>
@@ -45,7 +59,7 @@ const Cart = () => {
           </div>
           
           <div className="checkout">
-              <div className="whatsapp-btn">
+              <div className="whatsapp-btn" onClick={orderOnWhatsapp}>
                   <BsWhatsapp />
                   <span>commander sur whatsapp</span>
               </div>
