@@ -3,12 +3,16 @@ import {
   SHOW_HIDE_CART,
   REMOVE_ITEM,
   HANDLE_QUANTITY,
+  HIDE_CART,
 } from "../Types";
 
 const CartReducer = (state, action) => {
   switch (action.type) {
     case SHOW_HIDE_CART: {
       return { ...state, showCart: !state.showCart };
+    }
+    case HIDE_CART: {
+      return { ...state, showCart: false };
     }
     case ADD_TO_CART: {
       let item = state.cartItems.find((elt) => elt._id === action.payload._id);

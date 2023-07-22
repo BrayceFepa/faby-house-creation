@@ -7,6 +7,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import {  selectProducts } from "../../redux/reducers/productsReducer";
 import { selectCategories } from "../../redux/reducers/categoriesReducer";
+import SkeletonProductCard from "../SkeletonProductCard/SkeletonProductCard";
 
 const Products = () => {
 
@@ -31,6 +32,16 @@ const Products = () => {
       
     }
   }, [categories])
+
+  if (loading) {
+    return <div className="products-loading">
+      {
+        Array(20).fill().map((elt, id) => (
+          <SkeletonProductCard key={id}/>
+        ))
+      }
+    </div>
+  }
   
 
   return (

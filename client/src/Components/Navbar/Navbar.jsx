@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { FiSearch } from "react-icons/fi";
 import { FaUserAlt } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
@@ -33,7 +33,24 @@ const Navbar = () => {
             link: "/blog"
         }
     ];
-    const { cartItems, showCart, showHideCart } = useContext(CartContext);
+    const { cartItems, showCart, showHideCart, hideCart } = useContext(CartContext);
+  const cartref = useRef();
+        
+    const cartContainer = cartref.current
+      
+useEffect(() => {
+
+
+    const handleScroll = () => {
+      hideCart();
+    };
+
+    document.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+}, [showHideCart]);
 
   return (
       <>
@@ -51,7 +68,7 @@ const Navbar = () => {
 
           <div className="navbar-icons">
               <div className="icon">
-                  <FiSearch/>
+                  <FiSearch className='search-icon'/>
               </div>
               <div className="icon">
                   <FaUserAlt/>
@@ -66,7 +83,7 @@ const Navbar = () => {
               </div>
           </div>
 
-          {showCart && <Cart/>}
+          {showCart && (<div  ref={cartref} ><Cart/></div>)}
           
           </div>
           

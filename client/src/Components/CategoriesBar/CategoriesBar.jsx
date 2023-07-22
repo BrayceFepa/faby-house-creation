@@ -7,7 +7,7 @@ const CategoriesBar = () => {
      const categories = [
         {
             id: 1,
-            title: "foulard nigerian"
+            title: "foulard-nigerien"
         },
         {
             id: 2,
@@ -15,7 +15,7 @@ const CategoriesBar = () => {
         },
         {
             id: 3,
-            title: "paille française"
+            title: "paille-française"
         },
        
     ];

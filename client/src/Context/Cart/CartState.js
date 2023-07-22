@@ -6,6 +6,7 @@ import {
   ADD_TO_CART,
   REMOVE_ITEM,
   HANDLE_QUANTITY,
+  HIDE_CART,
 } from "../Types";
 
 const CartState = ({ children }) => {
@@ -24,6 +25,10 @@ const CartState = ({ children }) => {
     dispatch({ type: SHOW_HIDE_CART });
   };
 
+  const hideCart = () => {
+    dispatch({ type: HIDE_CART });
+  };
+
   const removeItem = (id) => {
     dispatch({ type: REMOVE_ITEM, payload: id });
   };
@@ -39,6 +44,7 @@ const CartState = ({ children }) => {
         cartItems: state.cartItems,
         addToCart,
         showHideCart,
+        hideCart,
         removeItem,
         handleQuantity,
       }}

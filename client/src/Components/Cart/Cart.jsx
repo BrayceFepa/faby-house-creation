@@ -5,8 +5,9 @@ import { BsFillTrashFill, BsWhatsapp } from "react-icons/bs";
 import CartContext from '../../Context/Cart/CartContext';
 
 const Cart = () => {
+
     
-    const { showHideCart, cartItems, removeItem, handleQuantity } = useContext(CartContext); 
+    const { showHideCart, cartItems, removeItem, handleQuantity, hideCart } = useContext(CartContext); 
  const orderOnWhatsapp = () => {
   let orderDetails = "*Hello Faby House Creation, j'aimerai acheter les articles suivants*";
   let total = 0;
@@ -22,31 +23,34 @@ const Cart = () => {
 }
 
     
-useEffect(() => {
-    const handleClickOutsideCart = (event) => {
-      const cartContainer = document.getElementById('cart-container');
-      if (cartContainer && !cartContainer.contains(event.target)) {
-        showHideCart();
-      }
-    };
+// useEffect(() => {
+//     const handleClickOutsideCart = (event) => {
+//       const cartContainer = cartref.current
+//       if (!document.contains(cartContainer)) {
+//         hideCart();
+//         console.log(event.target)
+//         console.log("cartContainer," ,cartContainer)
+//       }
+//     };
 
-    const handleScroll = () => {
-      showHideCart();
-    };
+//     const handleScroll = () => {
+//       hideCart();
+//       console.log("scrolling")
+//     };
 
-    document.addEventListener('click', handleClickOutsideCart);
-    document.addEventListener('scroll', handleScroll);
+//     window.addEventListener('click', handleClickOutsideCart);
+//     document.addEventListener('scroll', handleScroll);
 
-    return () => {
-      document.removeEventListener('click', handleClickOutsideCart);
-      document.removeEventListener('scroll', handleScroll);
-    };
-  }, [showHideCart]);
+//     return () => {
+//       document.removeEventListener('click', handleClickOutsideCart);
+//       document.removeEventListener('scroll', handleScroll);
+//     };
+//   }, [showHideCart]);
 
 
     
   return (
-      <div className='cart' id='cart-container'>
+      <div className='cart'>
           <div className="close-cart" onClick={()=>showHideCart()}>
               <AiFillCloseCircle size={'2.5em'}/>
           </div>

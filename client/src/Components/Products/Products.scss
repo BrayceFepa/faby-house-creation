@@ -34,7 +34,6 @@
                     display: flex;
                     align-items: center;
                     flex-wrap: wrap;
-                    gap: 2.5rem;
                     width: 100%;
 
                     @include mobile{
@@ -47,4 +46,17 @@
     }
 
     
+}
+.products-loading{
+    max-width: 140rem;
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    gap: 2rem;
+    @include mobile{
+        width: 90vw;
+        overflow: hidden;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 2fr));
+        gap: 1rem;
+    }
 }
