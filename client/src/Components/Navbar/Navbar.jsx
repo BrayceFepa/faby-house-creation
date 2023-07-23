@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { FiSearch } from "react-icons/fi";
 import { FaUserAlt } from "react-icons/fa";
-import { MdLogout } from "react-icons/md";
+import { MdLogout, MdMenu } from "react-icons/md";
 import { BsFillCartDashFill } from "react-icons/bs";
 import Images from '../../Constants/Images';
 
@@ -11,9 +11,12 @@ import "./Navbar.scss";
 import Cart from '../Cart/Cart';
 import CartContext from '../../Context/Cart/CartContext';
 import CategoriesBar from '../CategoriesBar/CategoriesBar';
+import Menu from './Menu/Menu';
+import SearchBox from "react-search-box";
 
 const Navbar = () => {
-
+const cartRef = useRef(null);
+    const [toggleMenu, setToggleMenu] = useState(null);
 
     const menus = [
         {
@@ -34,23 +37,23 @@ const Navbar = () => {
         }
     ];
     const { cartItems, showCart, showHideCart, hideCart } = useContext(CartContext);
-  const cartref = useRef();
+ 
         
-    const cartContainer = cartref.current
-      
-useEffect(() => {
-
-
-    const handleScroll = () => {
-      hideCart();
+    useEffect(() => {
+    const handleOutsideClick = (event) => {
+      // Check if the click target is inside the cart element or its children
+      if (!cartRef.current || !cartRef.current.contains(event.target)) {
+        hideCart();
+      }
     };
 
-    document.addEventListener('scroll', handleScroll);
+    document.addEventListener('mousedown', handleOutsideClick);
 
+    // Clean up the event listener when the component unmounts
     return () => {
-      document.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousedown', handleOutsideClick);
     };
-}, [showHideCart]);
+  }, [hideCart]);
 
   return (
       <>
@@ -60,16 +63,19 @@ useEffect(() => {
               <Link to="/"><img src={Images.logo} alt="" /></Link>
           </div>
 
-          <div className="navbar-menu">
-              {
-                  menus.map((menu) => (<span className='item'> <Link to={`${menu.link}`}>{ menu.name}</Link> </span>))
-              }
+          <div className="search-bar">
+                  <SearchBox
+                //   onChange={(value)=>console.log("SearchValue", value)}
+                      placeholder='Search something here'
+                      data={menus}
+                  />
+                  <div className="icon">
+                  <FiSearch className='search-icon'/>
+              </div>
           </div>
 
           <div className="navbar-icons">
-              <div className="icon">
-                  <FiSearch className='search-icon'/>
-              </div>
+              
               <div className="icon">
                   <FaUserAlt/>
               </div>
@@ -77,17 +83,17 @@ useEffect(() => {
                   <BsFillCartDashFill />
                   <div className='cart-items'>{cartItems.length}</div>
               </div>
-              <div className="icon">
-                      <MdLogout />
+              <div className="icon" onClick={()=>setToggleMenu(!toggleMenu)}>
+                      <MdMenu size={30} />
                       
               </div>
           </div>
 
-          {showCart && (<div  ref={cartref} ><Cart/></div>)}
-          
+          <div ref={cartRef} className={`cart-container  ${showCart && " active"}`} ><Cart/></div>
+                   <Menu toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
           </div>
           
-          <CategoriesBar/>
+          {/* <CategoriesBar/> */}
       </>
   );
 }

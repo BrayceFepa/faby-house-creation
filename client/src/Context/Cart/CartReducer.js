@@ -16,15 +16,23 @@ const CartReducer = (state, action) => {
     }
     case ADD_TO_CART: {
       let item = state.cartItems.find((elt) => elt._id === action.payload._id);
-      if (!item) {
+      if (!item && !action.payload?.customQty) {
         return {
           ...state,
           cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
         };
+      } else if (!item && action.payload?.customQty >= 1) {
+        return {
+          ...state,
+          cartItems: [
+            ...state.cartItems,
+            { ...action.payload, quantity: action.payload?.customQty },
+          ],
+        };
       } else {
         let updatedElts = state.cartItems.map((elt) => {
-          if (elt._id === item._id) {
-            return { ...elt, quantity: elt.quantity + 1 };
+          if (elt?._id === item?._id) {
+            return { ...elt, quantity: elt?.quantity + 1 };
           }
           return elt;
         });

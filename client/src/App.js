@@ -12,6 +12,7 @@ import CategoriesBar from "./Components/CategoriesBar/CategoriesBar";
 import MobileNavbar from "./Components/Navbar/MobileNavbar";
 import MobileFooter from "./Components/Footer/MobileFooter";
 import FetchDataLayout from "./Components/Layouts/FetchDataLayout";
+import NotFound from "./Components/NotFound/NotFound";
 
 const Layout = () => {
   return (
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <Product />,
+      },
+      // 404 route at the end
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import "./Cart.scss";
 import { AiFillCloseCircle, AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { BsFillTrashFill, BsWhatsapp } from "react-icons/bs";
@@ -21,40 +21,13 @@ const Cart = () => {
   const encodedMessage = encodeURIComponent(orderDetails);
   window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`);
 }
-
-    
-// useEffect(() => {
-//     const handleClickOutsideCart = (event) => {
-//       const cartContainer = cartref.current
-//       if (!document.contains(cartContainer)) {
-//         hideCart();
-//         console.log(event.target)
-//         console.log("cartContainer," ,cartContainer)
-//       }
-//     };
-
-//     const handleScroll = () => {
-//       hideCart();
-//       console.log("scrolling")
-//     };
-
-//     window.addEventListener('click', handleClickOutsideCart);
-//     document.addEventListener('scroll', handleScroll);
-
-//     return () => {
-//       document.removeEventListener('click', handleClickOutsideCart);
-//       document.removeEventListener('scroll', handleScroll);
-//     };
-//   }, [showHideCart]);
-
-
     
   return (
       <div className='cart'>
           <div className="close-cart" onClick={()=>showHideCart()}>
               <AiFillCloseCircle size={'2.5em'}/>
           </div>
-          <h4 className="title">products in your cart ({cartItems?.length})</h4>
+          <h4 className="title">Nombre de produits dans votre panier : {cartItems?.length}</h4>
           <div className="products__cart">
               {cartItems?.length > 0 ? cartItems?.map(item => (
                   <div className="item" key={item._id}>
@@ -64,8 +37,8 @@ const Cart = () => {
                       <div className="details">
                           <span className='item_title'>{item?.title}</span>
                           <div className="prices">
-                              <span className='initial_price'>{item?.initialPrice} FCFA</span>
-                              <span className='discounted_price'>{item?.discountedPrice} FCFA</span>
+                              <span className='initial_price'>{item?.initialPrice * item?.quantity} FCFA</span>
+                              <span className='discounted_price'>{item?.discountedPrice * item?.quantity} FCFA</span>
                           </div>
                           <div className="quantity">
                               <div onClick={()=>handleQuantity(item._id, -1)}><AiOutlineMinusCircle size={'2em'} /></div>

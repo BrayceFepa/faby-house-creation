@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 
 import "./Products.scss";
-import images from "../../Constants/Images";
 import ProductCard from "../ProductCard/ProductCard";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {  selectProducts } from "../../redux/reducers/productsReducer";
 import { selectCategories } from "../../redux/reducers/categoriesReducer";
 import SkeletonProductCard from "../SkeletonProductCard/SkeletonProductCard";
