@@ -13,6 +13,9 @@
         .cart-container.active {
             right: 0;
             box-shadow: 1rem 1rem 1rem 100vw rgba(37, 37, 37, 0.3);
+            @include mobile{
+                box-shadow: none;
+            }
         }
 // }
 

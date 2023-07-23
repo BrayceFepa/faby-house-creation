@@ -9,13 +9,16 @@ const Cart = () => {
     
     const { showHideCart, cartItems, removeItem, handleQuantity, hideCart } = useContext(CartContext); 
  const orderOnWhatsapp = () => {
-  let orderDetails = "*Hello Faby House Creation, j'aimerai acheter les articles suivants*";
+     let orderDetails = `Hello *Faby House Creation*, j'aimerai acheter les articles suivants :
+  `;
   let total = 0;
   cartItems.forEach((item) => {
     total += item.quantity * item.discountedPrice;
-    orderDetails += `%0A- ${item.quantity} ${item.title}(s), prix : ${item.quantity * item.discountedPrice} CFA`;
+      orderDetails += `*- ${item.quantity} ${item.title}(s), prix : ${item.quantity * item.discountedPrice} CFA*
+    `;
   });
-  orderDetails += `%0ALe total s'élève à : ${total} CFA`;
+     orderDetails += `
+  Le total s'élève à : *${total} CFA*`;
   
   const phoneNumber = "+237693267462";
   const encodedMessage = encodeURIComponent(orderDetails);
