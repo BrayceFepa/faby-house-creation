@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import "./Cart.scss";
 import { AiFillCloseCircle, AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { BsFillTrashFill, BsWhatsapp } from "react-icons/bs";
@@ -21,6 +21,7 @@ const Cart = () => {
   const encodedMessage = encodeURIComponent(orderDetails);
   window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`);
 }
+
     
   return (
       <div className='cart'>

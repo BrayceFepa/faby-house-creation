@@ -1,0 +1,19 @@
+@use "../../scss/" as *;
+
+.notfound_wrapper{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-flow: column;
+    padding: 1rem 3%;
+
+    h1{
+        font-size: 3rem;
+    }
+    p{
+        font-size: 2rem;
+        text-align: center;
+    }
+}

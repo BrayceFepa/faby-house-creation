@@ -14,6 +14,7 @@ import Menu from './Menu/Menu';
 const MobileNavbar = () => {
 
     const [toggleMenu, setToggleMenu] = useState(null);
+    
 
     
     const { cartItems, showCart, showHideCart } = useContext(CartContext);
@@ -44,7 +45,7 @@ const MobileNavbar = () => {
               </div>
           </div>
 
-            <div className={`mobile_cart-container  ${showCart && " active"}`} ><Cart/></div>
+            {/* <div className={`mobile_cart-container  ${showCart && " active"}`} ><Cart/></div> */}
           
     </div>
   );

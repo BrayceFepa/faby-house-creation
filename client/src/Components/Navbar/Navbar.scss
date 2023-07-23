@@ -169,16 +169,16 @@
     }
   }
 
-  .cart-container{
-    position: absolute;
-      top: 0;
-      bottom: 0;
-      right: -100vw;
-      z-index: 20;
-      transition: all .3s ease;
-  }
-        .cart-container.active{
-          right: 0;
-      box-shadow: 1rem 1rem 1rem 100vw rgba(37, 37, 37, 0.3);
-        }
+  // .cart-container{
+  //   position: absolute;
+  //     top: 0;
+  //     bottom: 0;
+  //     right: -100vw;
+  //     z-index: 20;
+  //     transition: all .3s ease;
+  // }
+  //       .cart-container.active{
+  //         right: 0;
+  //     box-shadow: 1rem 1rem 1rem 100vw rgba(37, 37, 37, 0.3);
+  //       }
 }

@@ -13,8 +13,33 @@ import MobileNavbar from "./Components/Navbar/MobileNavbar";
 import MobileFooter from "./Components/Footer/MobileFooter";
 import FetchDataLayout from "./Components/Layouts/FetchDataLayout";
 import NotFound from "./Components/NotFound/NotFound";
+import Cart from "./Components/Cart/Cart";
+import CartContext from "./Context/Cart/CartContext";
+import { useContext, useEffect, useRef } from "react";
+import "./App.scss";
 
 const Layout = () => {
+  const cartRef = useRef(null);
+
+  const { cartItems, showCart, showHideCart, hideCart } =
+    useContext(CartContext);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      // Check if the click target is inside the cart element or its children
+      if (!cartRef.current || !cartRef.current.contains(event.target)) {
+        hideCart();
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [hideCart]);
+
   return (
     <div className="app">
       <Navbar />
@@ -22,6 +47,9 @@ const Layout = () => {
       <Outlet />
       <MobileFooter />
       <Footer />
+      <div ref={cartRef} className={`cart-container  ${showCart && " active"}`}>
+        <Cart />
+      </div>
     </div>
   );
 };

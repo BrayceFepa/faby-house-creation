@@ -39,21 +39,21 @@ const cartRef = useRef(null);
     const { cartItems, showCart, showHideCart, hideCart } = useContext(CartContext);
  
         
-    useEffect(() => {
-    const handleOutsideClick = (event) => {
-      // Check if the click target is inside the cart element or its children
-      if (!cartRef.current || !cartRef.current.contains(event.target)) {
-        hideCart();
-      }
-    };
+//     useEffect(() => {
+//     const handleOutsideClick = (event) => {
+//       // Check if the click target is inside the cart element or its children
+//       if (!cartRef.current || !cartRef.current.contains(event.target)) {
+//         hideCart();
+//       }
+//     };
 
-    document.addEventListener('mousedown', handleOutsideClick);
+//     document.addEventListener('mousedown', handleOutsideClick);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, [hideCart]);
+//     // Clean up the event listener when the component unmounts
+//     return () => {
+//       document.removeEventListener('mousedown', handleOutsideClick);
+//     };
+//   }, [hideCart]);
 
   return (
       <>
@@ -89,7 +89,7 @@ const cartRef = useRef(null);
               </div>
           </div>
 
-          <div ref={cartRef} className={`cart-container  ${showCart && " active"}`} ><Cart/></div>
+          {/* <div ref={cartRef} className={`cart-container  ${showCart && " active"}`} ><Cart/></div> */}
                    <Menu toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
           </div>
           
