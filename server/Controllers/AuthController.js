@@ -16,7 +16,7 @@ export const registerUser = async (req, res) => {
       token,
       name: isAdded.name,
       email: isAdded.email,
-      message: "Cet addresse email existe déjà",
+      message: "Cette addresse email existe déjà",
     });
   }
 
