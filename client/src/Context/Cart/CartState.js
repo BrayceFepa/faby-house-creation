@@ -7,12 +7,14 @@ import {
   REMOVE_ITEM,
   HANDLE_QUANTITY,
   HIDE_CART,
+  TOGGLE_MOBILE_SEARCH,
 } from "../Types";
 
 const CartState = ({ children }) => {
   const initialState = {
     showCart: false,
     cartItems: [],
+    showSearch: false,
   };
 
   const [state, dispatch] = useReducer(CartReducer, initialState);
@@ -36,6 +38,9 @@ const CartState = ({ children }) => {
   const handleQuantity = (id, amount) => {
     dispatch({ type: HANDLE_QUANTITY, payload: { id, amount } });
   };
+  const toggleMobileSearch = () => {
+    dispatch({ type: TOGGLE_MOBILE_SEARCH });
+  };
 
   return (
     <CartContext.Provider
@@ -47,6 +52,8 @@ const CartState = ({ children }) => {
         hideCart,
         removeItem,
         handleQuantity,
+        toggleMobileSearch,
+        showSearch: state.showSearch,
       }}
     >
       {children}

@@ -10,17 +10,21 @@ import Cart from '../Cart/Cart';
 import CartContext from '../../Context/Cart/CartContext';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Menu from './Menu/Menu';
+import SearchBar from '../SearchBar/SearchBar';
+import { FiSearch } from 'react-icons/fi';
 
 const MobileNavbar = () => {
 
     const [toggleMenu, setToggleMenu] = useState(null);
+       const [searching, setSearching] = useState(false);
     
 
     
-    const { cartItems, showCart, showHideCart } = useContext(CartContext);
+    const { cartItems, showCart, showHideCart ,showSearch} = useContext(CartContext);
 
    return (
-      <div className='mobile__navbar'>
+       <>
+       <div className='mobile__navbar'>
           
           <div className="logo">
                <div className='pic'>
@@ -45,9 +49,23 @@ const MobileNavbar = () => {
               </div>
           </div>
 
-            {/* <div className={`mobile_cart-container  ${showCart && " active"}`} ><Cart/></div> */}
+           {/* <div className={`mobile_cart-container  ${showCart && " active"}`} ><Cart/></div> */}
+           <div className={`mobile-search ${showSearch && " active"}`}>
+                   <div className={`search-bar`}>
+                  <SearchBar setSearching={setSearching} searching={searching}/>
+                  <div className={`icon ${searching && " active"}`} onClick={()=> searching ? setSearching(false): {}}>
+                      {
+                          searching ? <AiFillCloseCircle  /> : <FiSearch className='search-icon'/>
+                  }
+              </div>
+          </div>
+               </div>
           
-    </div>
+          
+       </div>
+      
+            
+       </>
   );
 }
 

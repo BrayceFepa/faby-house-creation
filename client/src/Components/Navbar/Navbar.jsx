@@ -12,30 +12,14 @@ import Cart from '../Cart/Cart';
 import CartContext from '../../Context/Cart/CartContext';
 import CategoriesBar from '../CategoriesBar/CategoriesBar';
 import Menu from './Menu/Menu';
-import SearchBox from "react-search-box";
+import SearchBar from '../SearchBar/SearchBar';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 const Navbar = () => {
 const cartRef = useRef(null);
     const [toggleMenu, setToggleMenu] = useState(null);
 
-    const menus = [
-        {
-            name: "accueil",
-            link: "/"
-        },
-        {
-            name: "à propos",
-            link: "/about"
-        },
-        {
-            name: "formations",
-            link: "/formations"
-        },
-        {
-            name: "blog",
-            link: "/blog"
-        }
-    ];
+    const [searching, setSearching] = useState(false);
     const { cartItems, showCart, showHideCart, hideCart } = useContext(CartContext);
  
         
@@ -64,13 +48,11 @@ const cartRef = useRef(null);
           </div>
 
           <div className="search-bar">
-                  <SearchBox
-                //   onChange={(value)=>console.log("SearchValue", value)}
-                      placeholder='Search something here'
-                      data={menus}
-                  />
-                  <div className="icon">
-                  <FiSearch className='search-icon'/>
+                  <SearchBar setSearching={setSearching} searching={searching}/>
+                  <div className={`icon ${searching && " active"}`} onClick={()=> searching ? setSearching(false): {}}>
+                      {
+                          searching ? <AiFillCloseCircle  /> : <FiSearch className='search-icon'/>
+                  }
               </div>
           </div>
 

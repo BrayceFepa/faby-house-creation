@@ -97,16 +97,96 @@
         }
     }
 
-    // .mobile_cart-container{
-    //     position: absolute;
-    //         top: 0;
-    //         bottom: 0;
-    //         right: -100vw;
-    //         z-index: 20;
-    //         transition: all .3s ease;
-    // }
-    // .mobile_cart-container.active{
-    //     right: 0;
-    //         box-shadow: 1rem 1rem 1rem 100vw rgba(37, 37, 37, 0.3);
-    // }
+ 
+        .mobile-search {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -15rem;
+            box-shadow: .1rem .2rem .1rem $gray-bg;
+
+            .search-bar{
+                .icon {
+                        position: absolute;
+                        height: 80%;
+                        width: 4.8rem;
+                        background-color: $main-color;
+                        top: 0.45rem;
+                        right: .25rem;
+                        border-radius: .3rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                
+                        svg {
+                            font-size: 2.5rem;
+                            cursor: pointer;
+                
+                            path {
+                                color: $white;
+                            }
+                
+                            circle {
+                                color: $white;
+                            }
+                
+                            line {
+                                color: $white;
+                            }
+                
+                            &:hover {
+                                path {
+                                    color: $gold-color;
+                                }
+                
+                                circle {
+                                    color: $gold-color;
+                                }
+                
+                                line {
+                                    color: $gold-color;
+                                }
+                            }
+                
+                        }
+                    }
+                
+                    .icon.active {
+                        position: absolute;
+                        height: 80%;
+                        width: 4.8rem;
+                        background-color: $red;
+                        top: 0.45rem;
+                        right: .25rem;
+                        border-radius: .3rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                
+                        svg {
+                            font-size: 2.5rem;
+                            cursor: pointer;
+                
+                            path {
+                                color: $white;
+                            }
+                
+                            circle {
+                                color: $white;
+                            }
+                
+                            line {
+                                color: $white;
+                            }
+                
+                
+                        }
+                    }
+            }
+        }
+
+                 .mobile-search.active{
+                    top: .5rem;
+                    transition: all .3s ease;
+                 }
 }

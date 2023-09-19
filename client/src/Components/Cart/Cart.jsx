@@ -15,7 +15,8 @@ const Cart = () => {
   cartItems.forEach((item) => {
     total += item.quantity * item.discountedPrice;
       orderDetails += `*- ${item.quantity} ${item.title}(s), prix : ${item.quantity * item.discountedPrice} CFA*
-    `;
+   
+      `;
   });
      orderDetails += `
   Le total s'élève à : *${total} CFA*`;

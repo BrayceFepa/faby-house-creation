@@ -6,7 +6,10 @@ const ProductServices = {
   },
 
   getProductById(id) {
-    return requests.get(`/products/${id}`);
+    return requests.post(`/products/${id}`);
+  },
+  searchProductByTitle(querySearch) {
+    return requests.get(`/products?${querySearch}`);
   },
 };
 

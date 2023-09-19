@@ -4,6 +4,7 @@ import {
   REMOVE_ITEM,
   HANDLE_QUANTITY,
   HIDE_CART,
+  TOGGLE_MOBILE_SEARCH,
 } from "../Types";
 
 const CartReducer = (state, action) => {
@@ -61,6 +62,12 @@ const CartReducer = (state, action) => {
       return {
         ...state,
         cartItems: updatedElts.filter((elt) => elt.quantity > 0),
+      };
+    }
+    case TOGGLE_MOBILE_SEARCH: {
+      return {
+        ...state,
+        showSearch: !state.showSearch,
       };
     }
     default:
