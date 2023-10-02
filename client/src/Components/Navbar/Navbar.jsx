@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { FiSearch } from "react-icons/fi";
+
 import { FaUserAlt } from "react-icons/fa";
 import { MdLogout, MdMenu } from "react-icons/md";
 import { BsFillCartDashFill } from "react-icons/bs";
@@ -12,8 +12,8 @@ import Cart from '../Cart/Cart';
 import CartContext from '../../Context/Cart/CartContext';
 import CategoriesBar from '../CategoriesBar/CategoriesBar';
 import Menu from './Menu/Menu';
+
 import SearchBar from '../SearchBar/SearchBar';
-import { AiFillCloseCircle } from 'react-icons/ai';
 
 const Navbar = () => {
 const cartRef = useRef(null);
@@ -49,17 +49,14 @@ const cartRef = useRef(null);
 
           <div className="search-bar">
                   <SearchBar setSearching={setSearching} searching={searching}/>
-                  <div className={`icon ${searching && " active"}`} onClick={()=> searching ? setSearching(false): {}}>
-                      {
-                          searching ? <AiFillCloseCircle  /> : <FiSearch className='search-icon'/>
-                  }
-              </div>
           </div>
 
           <div className="navbar-icons">
               
               <div className="icon">
-                  <FaUserAlt/>
+                      <Link to={`/auth/login`}>
+                      <FaUserAlt/>
+                      </Link>
               </div>
               <div className="icon" onClick={()=>showHideCart()}>
                   <BsFillCartDashFill />

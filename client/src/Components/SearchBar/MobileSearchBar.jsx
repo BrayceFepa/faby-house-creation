@@ -8,12 +8,13 @@ import { useSelector } from 'react-redux';
 import { showSearch } from '../../redux/reducers/searchbarReducer';
 import { useDispatch } from 'react-redux';
 
-const SearchBar = ({searching,setSearching}) => {
+const MobileSearchBar = ({searching,setSearching}) => {
 
     const inputRef = useRef()
 
     const [productData, setProductData] = useState([]);
-    
+    const dispatch = useDispatch();
+     const { isShowSearch } = useSelector((state) => state.searchBar);
     
     const searchProductsByTitle = async (title) => {
         setSearching(true);
@@ -40,6 +41,7 @@ const SearchBar = ({searching,setSearching}) => {
     const onCloseSearch = () => {
         setSearching(false);
         inputRef.current.value = "";
+        dispatch(showSearch());
     }
 
 
@@ -89,10 +91,12 @@ const SearchBar = ({searching,setSearching}) => {
               }
               </div>
               
-              <div className={`icon ${searching && " active"}`} onClick={()=> searching ? onCloseSearch(): {}}>
-                      {
-                          searching ? <AiFillCloseCircle  /> : <FiSearch className='search-icon'/>
-                  }
+             
+          
+          <div className={`icon2 `} onClick={()=> onCloseSearch()}>
+                      
+                           <AiFillCloseCircle  /> 
+                  
               </div>
           
       </div>
@@ -102,4 +106,4 @@ const SearchBar = ({searching,setSearching}) => {
   )
 }
 
-export default SearchBar
+export default MobileSearchBar

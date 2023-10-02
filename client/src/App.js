@@ -17,6 +17,8 @@ import Cart from "./Components/Cart/Cart";
 import CartContext from "./Context/Cart/CartContext";
 import { useContext, useEffect, useRef } from "react";
 import "./App.scss";
+import About from "./pages/About/About";
+import Login from "./pages/Auth/Login/Login";
 
 const Layout = () => {
   const cartRef = useRef(null);
@@ -67,6 +69,18 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <Product />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/auth/login",
+        element: <Login />,
+      },
+      {
+        path: "auth/signup",
+        element: <About />,
       },
       // 404 route at the end
       {

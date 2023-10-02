@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'fabyhouse.com',
-  appName: 'fabyhousecreation',
+  appId: 'faby.house.com',
+  appName: 'fabyhouse',
   webDir: 'build',
   server: {
     androidScheme: 'https'

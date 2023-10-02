@@ -1,4 +1,4 @@
-package fabyhouse.com;
+package faby.house.com;
 
 import com.getcapacitor.BridgeActivity;
 

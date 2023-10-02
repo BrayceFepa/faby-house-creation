@@ -8,10 +8,10 @@
         width: 100%;
         height: 4rem;
         background: $white;
-        border-radius: .4rem;
+        border: none;
 
         @include mobile{
-            height: 6rem;
+            height: 4rem;
         }
 
         input{
@@ -20,6 +20,7 @@
             background: none;
             outline: none;
             padding: 0 0.5rem;
+            border: none;
         }
     }
 
@@ -84,4 +85,174 @@
         }
 
     }
+
+        .icon {
+            position: absolute;
+            height: 3.5rem;
+            width: 4rem;
+            background-color: $main-color;
+            top: 0.245rem;
+            right: .25rem;
+            border-radius: .3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            svg {
+                font-size: 2.5rem;
+                cursor: pointer;
+    
+                path {
+                    color: $white;
+                    // &:hover{
+                    //     color: $gold-color;
+                    // }
+                }
+    
+                circle {
+                    color: $white;
+                    // &:hover {
+                    //         color: $gold-color;
+                    //     }
+                }
+    
+                line {
+                    color: $white;
+                    // &:hover {
+                    //         color: $gold-color;
+                    //     }
+                }
+    
+                &:hover {
+                    path {
+                        color: $gold-color;
+                    }
+    
+                    circle {
+                        color: $gold-color;
+                    }
+    
+                    line {
+                        color: $gold-color;
+                    }
+                }
+    
+            }
+
+            @include mobile{
+                display: none;
+            }
+        }
+     
+    
+        .icon.active {
+            position: absolute;
+            height: 3.5rem;
+            width: 4rem;
+            background-color: $red;
+            top: 0.245rem;
+            right: .25rem;
+            border-radius: .3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            svg {
+                font-size: 2.5rem;
+                cursor: pointer;
+    
+                path {
+                    color: $white;
+                    // &:hover{
+                    //     color: $gold-color;
+                    // }
+                }
+    
+                circle {
+                    color: $white;
+                    // &:hover {
+                    //         color: $gold-color;
+                    //     }
+                }
+    
+                line {
+                    color: $white;
+                    // &:hover {
+                    //         color: $gold-color;
+                    //     }
+                }
+    
+                // &:hover {
+                //   path {
+                //     color: $gold-color;
+                //   }
+    
+                //   circle {
+                //     color: $gold-color;
+                //   }
+    
+                //   line {
+                //     color: $gold-color;
+                //   }
+                // }
+    
+            }
+
+        }
+
+                        .icon2 {
+                            position: absolute;
+                            height: 3.5rem;
+                            width: 4rem;
+                            background-color: $red;
+                            top: 0.245rem;
+                            right: .25rem;
+                            border-radius: .3rem;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+            
+                            svg {
+                                font-size: 2.5rem;
+                                cursor: pointer;
+            
+                                path {
+                                    color: $white;
+                                    // &:hover{
+                                    //     color: $gold-color;
+                                    // }
+                                }
+            
+                                circle {
+                                    color: $white;
+                                    // &:hover {
+                                    //         color: $gold-color;
+                                    //     }
+                                }
+            
+                                line {
+                                    color: $white;
+                                    // &:hover {
+                                    //         color: $gold-color;
+                                    //     }
+                                }
+            
+                                &:hover {
+                                    path {
+                                        color: $gold-color;
+                                    }
+            
+                                    circle {
+                                        color: $gold-color;
+                                    }
+            
+                                    line {
+                                        color: $gold-color;
+                                    }
+                                }
+            
+                            }
+                        }
+         
 }
+

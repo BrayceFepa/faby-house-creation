@@ -12,15 +12,19 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import Menu from './Menu/Menu';
 import SearchBar from '../SearchBar/SearchBar';
 import { FiSearch } from 'react-icons/fi';
+import { useSelector } from 'react-redux';
+import MobileSearchBar from '../SearchBar/MobileSearchBar';
+
 
 const MobileNavbar = () => {
 
     const [toggleMenu, setToggleMenu] = useState(null);
        const [searching, setSearching] = useState(false);
-    
+    const { isShowSearch } = useSelector((state) => state.searchBar);
+
 
     
-    const { cartItems, showCart, showHideCart ,showSearch} = useContext(CartContext);
+    const { cartItems, showHideCart} = useContext(CartContext);
 
    return (
        <>
@@ -50,14 +54,13 @@ const MobileNavbar = () => {
           </div>
 
            {/* <div className={`mobile_cart-container  ${showCart && " active"}`} ><Cart/></div> */}
-           <div className={`mobile-search ${showSearch && " active"}`}>
+           <div className={`mobile-search ${isShowSearch && " active"}`}>
                    <div className={`search-bar`}>
-                  <SearchBar setSearching={setSearching} searching={searching}/>
-                  <div className={`icon ${searching && " active"}`} onClick={()=> searching ? setSearching(false): {}}>
-                      {
-                          searching ? <AiFillCloseCircle  /> : <FiSearch className='search-icon'/>
-                  }
-              </div>
+                  <MobileSearchBar setSearching={setSearching} searching={searching}/>
+                  {/* <div className={`icon ${searching && " active"}`} onClick={()=> searching ? setSearching(false): {}}>
+                    <AiFillCloseCircle  /> 
+                  
+              </div> */}
           </div>
                </div>
           

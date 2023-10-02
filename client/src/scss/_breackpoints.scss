@@ -23,3 +23,9 @@
         @content;
     }
 }
+
+@mixin hidefromLargeDevice {
+    @media only screen and (min-width: $mobile-width){
+        @content;
+    }
+}

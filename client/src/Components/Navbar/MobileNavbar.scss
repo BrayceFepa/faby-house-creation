@@ -102,62 +102,23 @@
             position: absolute;
             left: 0;
             right: 0;
-            top: -15rem;
+            top: 2rem;
             box-shadow: .1rem .2rem .1rem $gray-bg;
+            transition: all .3s ease;
+            opacity: 0;
+            z-index: -10;
+            border: .2rem solid $gold-color;
+            border-radius: .4rem;
 
             .search-bar{
-                .icon {
-                        position: absolute;
-                        height: 80%;
-                        width: 4.8rem;
-                        background-color: $main-color;
-                        top: 0.45rem;
-                        right: .25rem;
-                        border-radius: .3rem;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
                 
-                        svg {
-                            font-size: 2.5rem;
-                            cursor: pointer;
-                
-                            path {
-                                color: $white;
-                            }
-                
-                            circle {
-                                color: $white;
-                            }
-                
-                            line {
-                                color: $white;
-                            }
-                
-                            &:hover {
-                                path {
-                                    color: $gold-color;
-                                }
-                
-                                circle {
-                                    color: $gold-color;
-                                }
-                
-                                line {
-                                    color: $gold-color;
-                                }
-                            }
-                
-                        }
-                    }
-                
-                    .icon.active {
+                    .icon {
                         position: absolute;
                         height: 80%;
                         width: 4.8rem;
                         background-color: $red;
                         top: 0.45rem;
-                        right: .25rem;
+                        right: .45rem;
                         border-radius: .3rem;
                         display: flex;
                         justify-content: center;
@@ -186,7 +147,7 @@
         }
 
                  .mobile-search.active{
-                    top: .5rem;
-                    transition: all .3s ease;
+                    top: 6.7rem;
+                    opacity: 1;
                  }
 }
