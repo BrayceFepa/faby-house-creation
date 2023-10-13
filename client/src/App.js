@@ -19,6 +19,7 @@ import { useContext, useEffect, useRef } from "react";
 import "./App.scss";
 import About from "./pages/About/About";
 import Login from "./pages/Auth/Login/Login";
+import Signup from "./pages/Auth/Signup/Signup";
 
 const Layout = () => {
   const cartRef = useRef(null);
@@ -74,20 +75,21 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
-      {
-        path: "/auth/login",
-        element: <Login />,
-      },
-      {
-        path: "auth/signup",
-        element: <About />,
-      },
-      // 404 route at the end
-      {
-        path: "*",
-        element: <NotFound />,
-      },
     ],
+  },
+
+  {
+    path: "/auth/login",
+    element: <Login />,
+  },
+  {
+    path: "auth/signup",
+    element: <Signup />,
+  },
+  // 404 route at the end
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 

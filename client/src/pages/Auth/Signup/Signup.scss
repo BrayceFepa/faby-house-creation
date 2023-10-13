@@ -1,13 +1,168 @@
 @use "../../../scss/" as *;
 
-.signup_page {
-    padding: 2rem;
-    height: 100vh;
+
+.form-container{
+height: 100vh;
+width: 100vw;
+overflow: hidden;
+display: flex;
+flex-flow: column;
+gap: 2rem;
+justify-content: center;
+align-items: center;
+background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0, 0, 0, 0.2)), url("../../../assets/images/auth-bg.jpg");
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+
+@include mobile{
+    gap: 1rem;
+    padding: 1rem;
+    min-height: 100vh;
+}
+
+
+.header{
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-flow: column;
 
-    h1 {
-        font-size: 4rem;
+    .logo{
+        height: 10rem;
+        width: 10rem;
+        @include mobile{
+            height: 7rem;
+            width: 7rem;
+        }
+
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
     }
+
+    .welcome-text{
+        text-align: center;
+        span{
+            color: $white;
+            font-size: 1.55rem;
+            text-align: center;
+
+            @include mobile{
+                font-size: 1.2rem;
+                line-height: 1.9rem;
+            }
+        }
+    }
+}
+
+.registration-form {
+    padding: 2rem;
+    background-color: $white;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 50%;
+
+    @include mobile{
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .name-fields {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
+        @include mobile{
+            flex-direction: column;
+        }
+
+        .input-box{
+            // height: 4rem;
+            flex: 1;
+            
+            
+            input {
+                border-radius: 5px;
+                border: .13rem solid $light-black;
+                   height: 5rem;
+                   width: 100%;
+                    padding: 10px;
+                    outline: none;
+                    transition: border-color 0.3s;
+            
+                    &:focus {
+                        border-color: $main-color;
+                    }
+                }
+                
+        }
+
+        
+    }
+
+        .input-box {
+            // height: 4rem;
+            flex: 1;
+            width: 100%;
+            position: relative;
+    
+            
+            input {
+                border-radius: 5px;
+                border: .13rem solid $light-black;
+                height: 5rem;
+                width: 100%;
+                padding: 10px;
+                outline: none;
+                transition: border-color 0.3s;
+    
+                &:focus {
+                    border-color: $main-color;
+                }
+            }
+                        .eye {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: 1rem;
+                            cursor: pointer;
+
+                            svg{
+                                font-size: 2rem;
+                                color: $main-color;
+                                path {
+                                        color: $main-color;
+                                    }
+                            }
+                        }
+
+                        button {
+                            // background-image: linear-gradient(to left, rgba(3, 42, 151, 0.918),$main-color);
+                            background-image: radial-gradient(circle at center, rgba(3, 42, 151, 0.918), $main-color);
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            padding: 10px 20px;
+                            cursor: pointer;
+                            width: 100%;
+                            height: 5rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 1rem;
+            
+                            &:hover {
+                                background-color: darken($main-color, 10%);
+                            }
+                        }
+        }
+
+    
+}
 }

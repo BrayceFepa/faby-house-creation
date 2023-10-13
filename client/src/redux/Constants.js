@@ -4,3 +4,5 @@ export const FETCH_PRODUCT_BY_ID = "FETCH_PRODUCT_BY_ID";
 export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
 export const FETCH_CATEGORY_BY_ID = "FETCH_CATEGORY_BY_ID";
 export const TOGGLE_SEARCH_BAR = "TOGGLE_SEARCH_BAR";
+export const LOGIN = "LOGIN";
+export const SIGNUP = "SIGNUP";

@@ -10,6 +10,7 @@ import pailleFr from "../assets/images/cap-paille-fr.png";
 import crinoline1 from "../assets/images/crinoline-1.jpg";
 import capNigerien from "../assets/images/cap-nigerien.png";
 import crinoline2 from "../assets/images/cap-crinoline.png";
+import authBg from "../assets/images/auth-bg.jpg";
 
 const Images = {
   logo,
@@ -24,6 +25,7 @@ const Images = {
   mobileSlide1,
   mobileSlide2,
   mobileSlide3,
+  authBg,
 };
 
 export default Images;

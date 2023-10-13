@@ -8,9 +8,8 @@ import Images from '../../Constants/Images';
 import { Link } from 'react-router-dom';
 
 import "./Navbar.scss";
-import Cart from '../Cart/Cart';
 import CartContext from '../../Context/Cart/CartContext';
-import CategoriesBar from '../CategoriesBar/CategoriesBar';
+import { useSelector } from "react-redux";
 import Menu from './Menu/Menu';
 
 import SearchBar from '../SearchBar/SearchBar';
@@ -21,6 +20,8 @@ const cartRef = useRef(null);
 
     const [searching, setSearching] = useState(false);
     const { cartItems, showCart, showHideCart, hideCart } = useContext(CartContext);
+      const user = useSelector((state)=>state.user.user); // Get the loading state
+
  
         
 //     useEffect(() => {
@@ -39,6 +40,10 @@ const cartRef = useRef(null);
 //     };
 //   }, [hideCart]);
 
+    useEffect(() => {
+        console.log("user",user);
+    },[user])
+    
   return (
       <>
       <div className='navbar'>
@@ -54,9 +59,18 @@ const cartRef = useRef(null);
           <div className="navbar-icons">
               
               <div className="icon">
-                      <Link to={`/auth/login`}>
-                      <FaUserAlt/>
-                      </Link>
+                      {
+                          user?
+                          <Link to={`/profile/${user.savedUser._id}`}>
+                                  <div className="profile">
+                                      {user.savedUser.firstName[0]}
+                          </div>
+                          </Link>
+                          :
+                          <Link to="/auth/login">
+                          <FaUserAlt />
+                          </Link>
+                      }
               </div>
               <div className="icon" onClick={()=>showHideCart()}>
                   <BsFillCartDashFill />

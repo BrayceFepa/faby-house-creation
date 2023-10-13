@@ -89,6 +89,20 @@
         }
        
       }
+      .profile{
+        height: 3.5rem;
+        width: 3.5rem;
+        background: #ffffff;
+        border-radius: 50%;
+        color: $main-color;
+        font-weight: bold;
+        font-size: 2rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: .5rem solid $gold-color;
+      }
       .cart-items {
         position: absolute;
         top: -0.5rem;
