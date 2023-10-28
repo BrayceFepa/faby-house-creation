@@ -1,0 +1,101 @@
+@use "../../scss/" as *;
+
+.profile_page{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    flex-flow: column;
+    gap: 1.3rem;
+
+    h2{
+        font-size: 2rem;
+    }
+   
+
+    .profile_container{
+        border: .1rem solid $light-black;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+
+        @include mobile{
+            flex-flow: column-reverse;
+            gap: 1.5rem;
+        }
+
+        .profile_left{
+            display: flex;
+            flex-flow: column;
+            gap: 2rem;
+
+            @include mobile{
+                gap: 1rem;
+            }
+
+            .user_info{
+                display: flex;
+                flex-flow: column;
+                align-items: flex-start;
+                gap: 1rem;
+
+                span{
+                    font-size: 1.5rem;
+                    font-weight: bold;
+
+                    @include mobile{
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+
+            .options_btn{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+
+                .btn{
+                    border-radius: .4rem;
+                    font-size: 1.3rem;
+                }
+            }
+        }
+
+        .profile_right{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: $main-color;
+            height: 15rem;
+                width: 15rem;
+                padding: 1rem;
+
+                @include mobile{
+                    // height: 8rem;
+                    // width: 8rem;
+                }
+
+            .profile_pic{
+                background: $white;
+                border-radius: 100%;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 10rem;
+                font-weight: bold;
+                color: $main-color;
+            }
+        }
+    }
+}
+
+
+
+

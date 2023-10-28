@@ -11,6 +11,7 @@ import crinoline1 from "../assets/images/crinoline-1.jpg";
 import capNigerien from "../assets/images/cap-nigerien.png";
 import crinoline2 from "../assets/images/cap-crinoline.png";
 import authBg from "../assets/images/auth-bg.jpg";
+import aboutBg from "../assets/images/about-bg.png";
 
 const Images = {
   logo,
@@ -26,6 +27,7 @@ const Images = {
   mobileSlide2,
   mobileSlide3,
   authBg,
+  aboutBg,
 };
 
 export default Images;

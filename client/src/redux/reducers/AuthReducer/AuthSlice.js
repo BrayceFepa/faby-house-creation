@@ -19,6 +19,7 @@ const initialState = {
   user: getUserInfoFromCookies() || null,
   token: null,
   loading: false, // Add loading state
+  isAuthenticated: false,
 };
 
 const userSlice = createSlice({
@@ -28,6 +29,7 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload.savedUser;
       state.token = action.payload.jwt;
+      state.isAuthenticated = true;
     },
     clearUser: (state) => {
       state.user = null;

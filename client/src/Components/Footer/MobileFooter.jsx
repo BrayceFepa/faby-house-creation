@@ -1,34 +1,30 @@
-import React, { useContext, useEffect } from 'react';
-import Images from '../../Constants/Images';
+import React, { useEffect } from 'react';
 
 
 import "./MobileFooter.scss";
 import { FaSearch, FaUserAlt } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import CartContext from '../../Context/Cart/CartContext';
 import { useDispatch } from 'react-redux';
 import { showSearch } from '../../redux/reducers/searchbarReducer';
+import { useSelector } from 'react-redux';
 
 const MobileFooter = () => {
 
-  // const { showSearch, toggleMobileSearch } = useContext(CartContext);
-
-  const dispatch = useDispatch()
-  
-  // useEffect(() => {
-  //   console.log("showsearch", showSearch)
-  // }, [showSearch])
+  const dispatch = useDispatch();
+   const user = useSelector((state)=>state.user.user); // Get the loading state
   
   const handleShowSearch = () => {
-    // toggleMobileSearch();
-    // console.log("showsearch", showSearch);
     dispatch(showSearch());
-  }
+  };
+
+  useEffect(() => {
+    console.log("user", user);
+  },[user])
 
   return (
     <div className='mobile__footer'>
-       <Link to={`/auth/login`}>
+       <Link to={`${user ? `/profile/${user.savedUser._id}`: "/auth/login"}`}>
       <div className='footer-icon'>
         <FaUserAlt size="3em"/>
       </div>

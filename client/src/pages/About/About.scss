@@ -1,14 +1,89 @@
 @use "../../scss/" as *;
 
 .about_page{
+    width: 100vw;
     padding: 2rem;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-flow: column;
+    gap: 1;
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)) , url("../../assets/images/about-bg.png");
+    background-size: cover;
+    background-position: center;
 
     h1{
+        font-size: 6rem;
+        color: $white;
+        @include mobile{
+            font-size: 4rem;
+        }
+    }
+    p{
+        font-size: 3rem;
+        color: $white;
+        @include mobile{
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.services{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: 2rem 0;
+
+    h2{
         font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        @include mobile{
+            font-size: 2rem;
+        }
+    }
+
+    .services-box{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        @include mobile{
+            flex-flow: column;
+        }
+
+        .box{
+            flex-basis: 31%;
+            padding: 1rem;
+            background-color: #7e70f87c;
+            border-radius: .5rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+            &:hover{
+                transform: translateY(-1.5rem);
+            }
+
+            h3{
+                font-size: 2rem;
+            }
+            p{
+                font-size: 1.5rem;
+            }
+        }
+
     }
 }
 

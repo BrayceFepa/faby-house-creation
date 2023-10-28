@@ -20,6 +20,10 @@ import "./App.scss";
 import About from "./pages/About/About";
 import Login from "./pages/Auth/Login/Login";
 import Signup from "./pages/Auth/Signup/Signup";
+import Formations from "./pages/Formations/Formations";
+import AuthGuard from "./Components/AuthGuard/AuthGuard";
+import Profile from "./Components/Profile/Profile";
+import Blog from "./Components/Blog/Blog";
 
 const Layout = () => {
   const cartRef = useRef(null);
@@ -75,6 +79,30 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
+      {
+        path: "/profile/:id",
+        element: (
+          <AuthGuard>
+            <Profile />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: "/formations",
+        element: (
+          <AuthGuard>
+            <Formations />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: "/blog",
+        element: (
+          <AuthGuard>
+            <Blog />
+          </AuthGuard>
+        ),
+      },
     ],
   },
 
@@ -86,6 +114,7 @@ const router = createBrowserRouter([
     path: "auth/signup",
     element: <Signup />,
   },
+
   // 404 route at the end
   {
     path: "*",

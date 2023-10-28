@@ -1,0 +1,20 @@
+@use "../../scss/" as *;
+
+.blog_page{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+    h2{
+        font-size: 4rem;
+        text-align: center;
+
+        font-weight: bold;
+        color: $main-color;
+    }
+}
+
+
+
