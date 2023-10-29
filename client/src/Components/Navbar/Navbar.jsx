@@ -61,7 +61,7 @@ const cartRef = useRef(null);
               <div className="icon">
                       {
                           user?
-                          <Link to={`/profile/${user.savedUser._id}`}>
+                          <Link to={`/profile`}>
                                   <div className="profile">
                                       {user.savedUser.firstName[0]}
                           </div>

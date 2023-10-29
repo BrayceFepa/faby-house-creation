@@ -5,14 +5,15 @@ import { useSelector } from 'react-redux';
 const AuthGuard = ({ children }) => {
     const navigate = useNavigate();
     const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+    const user = useSelector((state) => state.user.user);
 
     useEffect(() => {
-        if (!isAuthenticated) {
+        if (!user) {
             navigate("/auth/login")
-        }
-    },[])
+        };
+    }, [user])
 
-    if (!isAuthenticated) {
+    if (!user) {
         // redirect to the login page
         navigate("/auth/login");
         console.log("not loged in")

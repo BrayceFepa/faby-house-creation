@@ -24,6 +24,11 @@ import Formations from "./pages/Formations/Formations";
 import AuthGuard from "./Components/AuthGuard/AuthGuard";
 import Profile from "./Components/Profile/Profile";
 import Blog from "./Components/Blog/Blog";
+import AdminLayout from "./Components/AdminComponents/AdminLayout/AdminLayout";
+import AdminProducts from "./Components/AdminComponents/AdminProducts/AdminProducts";
+import AdminCategories from "./Components/AdminComponents/AdminCategories/AdminCategories";
+import AdminFromations from "./Components/AdminComponents/AdminFromations/AdminFromations";
+import AdminUsers from "./Components/AdminComponents/AdminUsers/AdminUsers";
 
 const Layout = () => {
   const cartRef = useRef(null);
@@ -80,7 +85,7 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/profile/:id",
+        path: "/profile",
         element: (
           <AuthGuard>
             <Profile />
@@ -114,6 +119,46 @@ const router = createBrowserRouter([
     path: "auth/signup",
     element: <Signup />,
   },
+  {
+    path: "/adminfhc/products",
+    element: (
+      <AdminLayout>
+        <AdminProducts />
+      </AdminLayout>
+    ),
+  },
+  {
+    path: "/adminfhc/categories",
+    element: (
+      <AdminLayout>
+        <AdminCategories />
+      </AdminLayout>
+    ),
+  },
+  {
+    path: "/adminfhc/formations",
+    element: (
+      <AdminLayout>
+        <AdminFromations />
+      </AdminLayout>
+    ),
+  },
+  {
+    path: "/adminfhc/users",
+    element: (
+      <AdminLayout>
+        <AdminUsers />
+      </AdminLayout>
+    ),
+  },
+
+  // {
+  //   path: "/adminfhc",
+  //   element: <AdminLayout />,
+  //   children: [
+
+  //   ],
+  // },
 
   // 404 route at the end
   {

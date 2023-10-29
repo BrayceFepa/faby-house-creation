@@ -1,0 +1,19 @@
+@use "../../../scss/" as *;
+
+
+.admin_layout{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100vw;
+
+    .sidebar{
+        width: 20%;
+    }
+
+    .child{
+        width: 80%;
+    }
+}
+
+

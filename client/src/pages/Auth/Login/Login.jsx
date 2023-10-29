@@ -20,6 +20,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading); // Get the loading state
   const user = useSelector((state)=>state.user.user); // Get the loading state
+  const error = useSelector((state)=>state.user.error); // Get the loading state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +37,7 @@ const Login = () => {
       password: '',
     });
   };
+  
 
   return (
        <div className='form-container'>

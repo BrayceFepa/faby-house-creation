@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 const getUserInfoFromCookies = () => {
   const userInfoCookie = Cookies.get("userInfo"); // Replace 'userInfo' with your actual cookie name
@@ -20,6 +21,7 @@ const initialState = {
   token: null,
   loading: false, // Add loading state
   isAuthenticated: false,
+  error: null,
 };
 
 const userSlice = createSlice({
@@ -38,9 +40,22 @@ const userSlice = createSlice({
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
+    setError: (state, action) => {
+      state.error = action.payload;
+      toast.error(`${action.payload.response.data.message}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    },
   },
 });
 
-export const { setUser, clearUser, setLoading } = userSlice.actions;
+export const { setUser, clearUser, setLoading, setError } = userSlice.actions;
 export const selectLoading = (state) => state.user.loading;
 export default userSlice.reducer;

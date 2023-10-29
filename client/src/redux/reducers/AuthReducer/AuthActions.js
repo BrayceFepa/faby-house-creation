@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { SIGNUP, LOGIN } from "../../Constants";
 import AuthServices from "../../../Services/AuthServices";
-import { setLoading, setUser } from "./AuthSlice";
+import { setLoading, setUser, setError } from "./AuthSlice";
 import Cookies from "js-cookie";
 import { Navigate, useNavigate } from "react-router-dom";
 
