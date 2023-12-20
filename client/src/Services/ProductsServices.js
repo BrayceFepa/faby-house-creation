@@ -11,6 +11,9 @@ const ProductServices = {
   searchProductByTitle(querySearch) {
     return requests.get(`/products?${querySearch}`);
   },
+  getAllProducts() {
+    return requests.get(`/products/all`);
+  },
 };
 
 export default ProductServices;

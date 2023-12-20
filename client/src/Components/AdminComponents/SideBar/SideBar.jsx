@@ -1,24 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './SideBar.scss';
 
 const SideBar = () => {
+
+  const adminMenus = [
+    {
+      title: "Admin Dashboard",
+      link: "/adminfhc"
+    },
+    {
+      title: "Products",
+      link: "/adminfhc/products"
+    },
+    {
+      title: "Categories",
+      link: "/adminfhc/categories"
+    },
+    {
+      title: "Users",
+      link: "/adminfhc/users"
+    },
+    {
+      title: "Formations",
+      link: "/adminfhc/formations"
+    },
+  ]
+
+  useEffect(()=>{
+    console.log("url", window.location.href.endsWith("/adminfhc/formations"))
+  },[window.location.href])
+
  return (
     <div className="sidebar">
-      <div className="logo">Admin Dashboard</div>
-      <ul className="nav">
-        <li>
-          <Link to="/adminfhc/products">Products</Link>
-        </li>
-        <li>
-          <Link to="/adminfhc/categories">Categories</Link>
-        </li>
-        <li>
-          <Link to="/adminfhc/users">Users</Link>
-        </li>
-        <li>
-          <Link to="/adminfhc/formations">Formations</Link>
-        </li>
+     <ul className="nav">
+       {
+         adminMenus.map((menu, id) => {
+           return (
+             <li key={id} className={`${window.location.href.endsWith(menu.link) && "active"}`}><Link to={menu.link}>{menu.title}</Link> </li>
+           )
+         })
+       }
       </ul>
     </div>
   );

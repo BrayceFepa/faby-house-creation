@@ -40,9 +40,9 @@ const cartRef = useRef(null);
 //     };
 //   }, [hideCart]);
 
-    useEffect(() => {
-        console.log("user",user);
-    },[user])
+    // useEffect(() => {
+    //     console.log("user",user);
+    // },[user])
     
   return (
       <>

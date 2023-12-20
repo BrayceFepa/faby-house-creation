@@ -1,0 +1,39 @@
+@use "../../scss/" as *;
+
+.carousel_container{
+    margin-top: 5rem;
+        padding: 0 2%;
+        padding-left: 3%;
+
+    width: 100%;
+    // display: flex;
+    // flex-flow: column;
+    // gap: 2rem;
+        @include mobile {
+            margin-top: 3rem;
+        }
+
+        .heading{
+            text-align-last: left;
+        }
+
+        .products-list{
+            margin-top: 2rem;
+                display: grid;
+                grid-template-columns: repeat(1fr, 27rem);
+                gap: 1rem;
+            
+                @include mobile {
+                    gap: 1rem;
+                    justify-content: center;
+                }
+        }
+
+        .swiper{
+            .swiper-wrapper{
+                a{
+                    // width: 27rem !important;
+                }
+            }
+        }
+}

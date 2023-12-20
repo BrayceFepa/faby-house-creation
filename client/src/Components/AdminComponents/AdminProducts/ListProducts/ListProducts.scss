@@ -1,0 +1,46 @@
+@use "../../../../scss/" as *;
+
+.list_products{
+    height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    
+        h2 {
+            font-size: 10rem;
+        }
+
+                .nav_produts {
+                    position: absolute;
+        
+                    top: 0;
+                    width: 100%;
+                    padding: 1rem;
+                    background: $white;
+                    box-shadow: .1rem .2rem .3rem rgba($color: #000000, $alpha: 0.5);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+        
+                    .options_btn {
+                        display: flex;
+                        gap: .5rem;
+                    }
+                }
+
+                .table_products{
+                    width: 100%;
+                    padding: 1rem;
+
+                    table{
+                        width: 100%;
+                        border-collapse: collapse;
+
+                        th, td, tr{
+                            border: .1rem solid $main-color;
+                            padding: 0.1rem;
+                        }
+                    }
+                }
+}

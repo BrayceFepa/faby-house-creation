@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 // import dotenv from "dotenv";
 // dotenv.config();
 
@@ -9,6 +10,22 @@ const instance = axios.create({
     Accept: "application/json",
     "Content-Type": "application/json",
   },
+});
+
+// add a request interceptor
+instance.interceptors.request.use(function (config) {
+  //do something before request is send
+  let userInfo;
+  if (Cookies.get("userInfo")) {
+    userInfo = JSON.parse(Cookies.get("userInfo"));
+  }
+
+  return {
+    ...config,
+    headers: {
+      authorization: userInfo ? `Bearer ${userInfo?.jwt}` : null,
+    },
+  };
 });
 
 const responseBody = (response) => response.data;

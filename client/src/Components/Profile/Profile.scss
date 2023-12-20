@@ -59,6 +59,10 @@
                 justify-content: space-between;
                 gap: 1rem;
 
+                @include mobile{
+                    flex-wrap: wrap;
+                }
+
                 .btn{
                     border-radius: .4rem;
                     font-size: 1.3rem;

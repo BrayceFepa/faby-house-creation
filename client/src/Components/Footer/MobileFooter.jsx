@@ -18,9 +18,9 @@ const MobileFooter = () => {
     dispatch(showSearch());
   };
 
-  useEffect(() => {
-    console.log("user", user);
-  },[user])
+  // useEffect(() => {
+  //   console.log("user", user);
+  // },[user])
 
   return (
     <div className='mobile__footer'>

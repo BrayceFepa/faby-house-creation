@@ -29,6 +29,8 @@ import AdminProducts from "./Components/AdminComponents/AdminProducts/AdminProdu
 import AdminCategories from "./Components/AdminComponents/AdminCategories/AdminCategories";
 import AdminFromations from "./Components/AdminComponents/AdminFromations/AdminFromations";
 import AdminUsers from "./Components/AdminComponents/AdminUsers/AdminUsers";
+import AdminHone from "./Components/AdminComponents/AdminHone/AdminHone";
+import ListProducts from "./Components/AdminComponents/AdminProducts/ListProducts/ListProducts";
 
 const Layout = () => {
   const cartRef = useRef(null);
@@ -119,46 +121,61 @@ const router = createBrowserRouter([
     path: "auth/signup",
     element: <Signup />,
   },
-  {
-    path: "/adminfhc/products",
-    element: (
-      <AdminLayout>
-        <AdminProducts />
-      </AdminLayout>
-    ),
-  },
-  {
-    path: "/adminfhc/categories",
-    element: (
-      <AdminLayout>
-        <AdminCategories />
-      </AdminLayout>
-    ),
-  },
-  {
-    path: "/adminfhc/formations",
-    element: (
-      <AdminLayout>
-        <AdminFromations />
-      </AdminLayout>
-    ),
-  },
-  {
-    path: "/adminfhc/users",
-    element: (
-      <AdminLayout>
-        <AdminUsers />
-      </AdminLayout>
-    ),
-  },
 
-  // {
-  //   path: "/adminfhc",
-  //   element: <AdminLayout />,
-  //   children: [
-
-  //   ],
-  // },
+  {
+    path: "/adminfhc",
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "/adminfhc/home",
+        element: (
+          // <AdminLayout>
+          <AdminHone />
+          //{/* </AdminLayout> */}
+        ),
+      },
+      {
+        path: "/adminfhc/products",
+        element: (
+          // <AdminLayout>
+          <AdminProducts />
+          //{/* </AdminLayout> */}
+        ),
+      },
+      {
+        path: "/adminfhc/listproducts",
+        element: (
+          // <AdminLayout>
+          <ListProducts />
+          //{/* </AdminLayout> */}
+        ),
+      },
+      {
+        path: "/adminfhc/categories",
+        element: (
+          // <AdminLayout>
+          <AdminCategories />
+          //{/* </AdminLayout> */}
+        ),
+      },
+      {
+        path: "/adminfhc/formations",
+        element: (
+          // <AdminLayout>
+          <AdminFromations />
+          //{/* </AdminLayout> */}
+        ),
+      },
+      {
+        path: "/adminfhc/users",
+        element: (
+          // <AdminLayout>
+          <AdminUsers />
+          //{/* </AdminLayout> */}
+        ),
+      },
+    ],
+  },
 
   // 404 route at the end
   {

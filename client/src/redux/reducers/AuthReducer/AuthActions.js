@@ -17,7 +17,11 @@ export const signupAction = createAsyncThunk(
       });
       dispatch(setUser({ savedUser, jwt }));
       dispatch(setLoading(false)); // Set loading to false
-      window.location = "/";
+      if (savedUser.isAdmin) {
+        window.location = "/adminfhc";
+      } else {
+        window.location = "/";
+      }
       return response;
     } catch (error) {
       dispatch(setLoading(false)); // Set loading to false on error

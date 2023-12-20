@@ -5,6 +5,7 @@ import {
   getAllProducts,
   getProductById,
   getShowingProducts,
+  getTrendsProducts,
   updateProduct,
   updateStatus,
 } from "../Controllers/ProductController.js";
@@ -18,6 +19,9 @@ router.post("/add", checkAdminAuthorization, addProduct);
 
 // get all products
 router.get("/all", checkAdminAuthorization, getAllProducts);
+
+// get all products
+router.get("/discounts", checkAdminAuthorization, getTrendsProducts);
 
 // get showing products
 router.get("/", getShowingProducts);

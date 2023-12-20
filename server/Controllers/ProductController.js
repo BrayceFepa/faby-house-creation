@@ -123,6 +123,54 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
+export const getTrendsProducts = async (req, res) => {
+  const { title, category, price, page, limit } = req.query;
+
+  const queryObject = {};
+  let sortPrice;
+
+  if (title) {
+    queryObject.$or = [{ title: { $regex: `${title}`, $options: "i" } }];
+  }
+
+  if (price === "low") {
+    sortPrice = 1;
+  } else {
+    sortPrice = -1;
+  }
+
+  if (category) {
+    queryObject.category = { $regex: category, $options: "i" };
+  }
+
+  queryObject.discountedPrice = {
+    $lt: { $multiply: ["$price", 0.7] }, // Discounted price is less than 70% of the original price
+  };
+
+  const pages = Number(page);
+  const limits = Number(limit);
+  const skip = (pages - 1) * limit;
+
+  try {
+    const totalDoc = await ProductModel.countDocuments(queryObject);
+    const products = await ProductModel.find(queryObject)
+      .sort(price ? { price: sortPrice } : { _id: -1 })
+      .skip(skip)
+      .limit(limits);
+
+    res.status(200).send({
+      products,
+      totalDoc,
+      limits,
+      pages,
+    });
+  } catch (error) {
+    res.status(500).send({
+      message: error.message,
+    });
+  }
+};
+
 export const getProductById = async (req, res) => {
   try {
     const product = await ProductModel.findById(req.params.id);

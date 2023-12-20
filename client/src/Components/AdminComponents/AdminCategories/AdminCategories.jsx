@@ -3,7 +3,9 @@ import "./AdminCategories.scss";
 
 const AdminCategories = () => {
   return (
-    <div>AdminCategories</div>
+    <div className='admin_categories'>
+      <h2>AdminCategories</h2>
+    </div>
   );
 }
 
