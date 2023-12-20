@@ -23,14 +23,10 @@ export const isAuth = async (req, res, next) => {
   const { authorization } = req.headers;
 
   try {
-    if (authorization.length > 0) {
-      const token = authorization.split(" ")[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded;
-      next();
-    } else {
-      res.status(403).send("Not authorized");
-    }
+    const token = authorization.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
   } catch (error) {
     res.status(401).send({ message: error.message });
   }
@@ -48,13 +44,9 @@ export const isAdmin = async (req, res, next) => {
 export const checkAdminAuthorization = (req, res, next) => {
   //Get the token from the request headers or query parameter
   const { authorization } = req.headers;
-  if (authorization.length > 0) {
-    const token = authorization.split(" ")[1];
-    if (!token) {
-      return res.status(401).send({ message: "Missing token" });
-    }
-  } else {
-    res.status(403).send({ message: "Not authorized" });
+  const token = authorization.split(" ")[1];
+  if (!token) {
+    return res.status(401).send({ message: "Missing token" });
   }
 
   try {
