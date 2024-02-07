@@ -9,7 +9,7 @@ const AdminLayout = () => {
     const user = useSelector((state) => state.user.user);
 
      useEffect(() => {
-        if (!user.savedUser.isAdmin) {
+        if (!user) {
             navigate("/");
              return null; //Prevent rendering the protected component
         }

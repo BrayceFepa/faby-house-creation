@@ -7,7 +7,8 @@ const SideBar = () => {
   const adminMenus = [
     {
       title: "Admin Dashboard",
-      link: "/adminfhc"
+      link: "/adminfhc",
+      home: true
     },
     {
       title: "Products",
@@ -25,6 +26,10 @@ const SideBar = () => {
       title: "Formations",
       link: "/adminfhc/formations"
     },
+    {
+      title: "Accueil",
+      link: "/"
+    },
   ]
 
   useEffect(()=>{
@@ -37,7 +42,7 @@ const SideBar = () => {
        {
          adminMenus.map((menu, id) => {
            return (
-             <li key={id} className={`${window.location.href.endsWith(menu.link) && "active"}`}><Link to={menu.link}>{menu.title}</Link> </li>
+             <li key={id} className={`${(window.location.href.endsWith(menu.link) || (menu?.home && window.location.href.endsWith(menu.link))) && "active"}`}><Link to={menu.link}>{menu.title}</Link> </li>
            )
          })
        }

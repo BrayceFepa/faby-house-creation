@@ -14,6 +14,7 @@
     margin: 0 1rem;
     margin-top: 2rem;
 
+
     @include mobile{
         padding: 1rem;
         gap: 1rem;
@@ -41,6 +42,9 @@
             left: 0.7rem;
             top: 0.7rem;
         }
+    }
+    .new.active{
+        top: 2rem;
     }
     .qty{
         position: absolute;
@@ -196,5 +200,55 @@
                                 }
                         }
         }
+    }
+    .admin-options{
+        display: none;
+    }
+    &:hover{
+        .admin-options {
+                position: absolute;
+                top: .5rem;
+                left: .5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .6rem;
+        
+                .delete {
+                    background-color: red;
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    padding: 0.5rem;
+                    border-radius: .5rem;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+        
+                    svg {
+                        path {
+                            color: white;
+                        }
+                    }
+                }
+        
+                .edit {
+                    background-color: rgb(0, 187, 0);
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    padding: 0.5rem;
+                    border-radius: .5rem;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+        
+                    svg {
+                        path {
+                            color: white;
+                        }
+                    }
+                }
+            }
     }
 }

@@ -31,6 +31,7 @@ import AdminFromations from "./Components/AdminComponents/AdminFromations/AdminF
 import AdminUsers from "./Components/AdminComponents/AdminUsers/AdminUsers";
 import AdminHone from "./Components/AdminComponents/AdminHone/AdminHone";
 import ListProducts from "./Components/AdminComponents/AdminProducts/ListProducts/ListProducts";
+import EditProduct from "./Components/AdminComponents/AdminProducts/EditProduct/EditProduct";
 
 const Layout = () => {
   const cartRef = useRef(null);
@@ -127,6 +128,14 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
+        index: true,
+        element: (
+          // <AdminLayout>
+          <AdminHone />
+          //{/* </AdminLayout> */}
+        ),
+      },
+      {
         path: "/adminfhc/home",
         element: (
           // <AdminLayout>
@@ -147,6 +156,14 @@ const router = createBrowserRouter([
         element: (
           // <AdminLayout>
           <ListProducts />
+          //{/* </AdminLayout> */}
+        ),
+      },
+      {
+        path: "/adminfhc/editproduct/:productId",
+        element: (
+          // <AdminLayout>
+          <EditProduct />
           //{/* </AdminLayout> */}
         ),
       },

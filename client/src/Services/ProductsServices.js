@@ -11,8 +11,14 @@ const ProductServices = {
   searchProductByTitle(querySearch) {
     return requests.get(`/products?${querySearch}`);
   },
-  getAllProducts() {
-    return requests.get(`/products/all`);
+  getAllProducts(page, pageSize) {
+    return requests.get(`/products/all?page=${page}&limit=${pageSize}`);
+  },
+  deleteProduct(id) {
+    return requests.delete(`/products/${id}`);
+  },
+  updateProduct(id, data) {
+    return requests.put(`/products/${id}`, data);
   },
 };
 
