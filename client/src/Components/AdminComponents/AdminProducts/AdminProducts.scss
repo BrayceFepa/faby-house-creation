@@ -59,6 +59,9 @@
             border: .1rem solid $main-color;
             border-radius: .4rem;
             padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: .7rem;
 
 
             input{
@@ -75,6 +78,10 @@
         }
         .submit-btn{
             width: 100%;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            justify-content: center;
         }
     }
 }

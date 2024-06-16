@@ -22,7 +22,13 @@ const productSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    removeProduct: (state, action) => {
+      state.products.products = state.products.products.filter(
+        (product) => product._id !== action.payload.productId
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -63,7 +69,7 @@ const singleProductSlice = createSlice({
   },
 });
 
-export const {} = productSlice.actions;
+export const { removeProduct } = productSlice.actions;
 export const {} = singleProductSlice.actions;
 
 export const selectProducts = (state) => state.products.products;

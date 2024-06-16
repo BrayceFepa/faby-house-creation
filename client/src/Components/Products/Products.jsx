@@ -17,11 +17,11 @@ const Products = () => {
 
 
 
-  // useEffect(() => {
-  //   if (products) {
-  //     console.log("products", products);
-  //   }
-  // }, [products])
+  useEffect(() => {
+    if (products) {
+      console.log("products", products);
+    }
+  }, [products])
   // useEffect(() => {
   //   if (categories) {
   //     console.log("categoriesrdx", categories)

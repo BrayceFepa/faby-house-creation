@@ -43,8 +43,10 @@
             top: 0.7rem;
         }
     }
-    .new.active{
-        top: 2rem;
+    &:hover{
+        .new {
+                top: 3.5rem;
+            }
     }
     .qty{
         position: absolute;

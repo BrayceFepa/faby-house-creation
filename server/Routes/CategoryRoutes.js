@@ -22,7 +22,7 @@ router.get("/all", checkAdminAuthorization, getAllCategories);
 router.get("/", getShowingCategory);
 
 // get a specific category
-router.get("/:id", getCategoryById);
+router.post("/:id", getCategoryById);
 
 // update a category
 router.put("/:id", checkAdminAuthorization, updateCategory);

@@ -11,7 +11,7 @@ const AdminLayout = () => {
      useEffect(() => {
         if (!user) {
             navigate("/");
-             return null; //Prevent rendering the protected component
+            //  return null; //Prevent rendering the protected component
         }
     },[])
   return (

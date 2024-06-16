@@ -26,12 +26,22 @@
             }
 
             li{
-                color: $white;
-                font-size: 1.3rem;
-                margin-top: 0.3rem;
                 cursor: pointer;
-                list-style: none;
+                    list-style: none;
+                span{
+                    color: $white;
+                        font-size: 1.3rem;
+                        margin-top: 0.5rem;
+                        
+                }
             }
+
+            .links{
+                display: flex;
+                flex-flow: column;
+                gap: 1rem;
+            }
+
 
             p{
                 color: $white;

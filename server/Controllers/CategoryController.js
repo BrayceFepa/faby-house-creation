@@ -34,8 +34,15 @@ export const getShowingCategory = async (req, res) => {
 
 export const getAllCategories = async (req, res) => {
   try {
-    const categories = await CategoryModel.find({}).sort({ _id: -1 });
-    res.status(200).send(categories);
+    const { page, limit } = req.query;
+    const pages = Number(page);
+    const limits = Number(limit);
+    const skip = (pages - 1) * limit;
+    const categories = await CategoryModel.find({})
+      .sort({ _id: -1 })
+      .skip(skip)
+      .limit(limits);
+    res.status(200).send(categories, limits, pages);
   } catch (error) {
     res.status(500).send({ message: error.message });
   }
@@ -43,7 +50,7 @@ export const getAllCategories = async (req, res) => {
 
 export const getCategoryById = async (req, res) => {
   try {
-    const category = CategoryModel.findById(req.params.id);
+    const category = await CategoryModel.findById(req.params.id);
     if (category) {
       res.send(category);
     } else {
@@ -55,23 +62,22 @@ export const getCategoryById = async (req, res) => {
 };
 
 export const updateCategory = async (req, res) => {
-  const { currentUserAdminStatus } = req.body;
-  if (currentUserAdminStatus) {
-    try {
-      const category = await CategoryModel.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        { new: true }
-      );
-      res
-        .status(201)
-        .send({ data: category, message: "Category updated successfully" });
-    } catch (error) {
-      res.status(500).send({ message: error.message });
-    }
-  } else {
-    res.status(401).message({ message: "Forbidden" });
+  // if (currentUserAdminStatus) {
+  try {
+    const category = await CategoryModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res
+      .status(201)
+      .send({ data: category, message: "Category updated successfully" });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
   }
+  // } else {
+  //   res.status(401).send({ message: "Forbidden" });
+  // }
 };
 
 export const updateStatus = async (req, res) => {
@@ -94,4 +100,11 @@ export const updateStatus = async (req, res) => {
   }
 };
 
-export const deleteCategory = async (req, res) => {};
+export const deleteCategory = async (req, res) => {
+  try {
+    await CategoryModel.findByIdAndDelete(req.params.id);
+    res.status(200).send({ message: "Category deleted successfully !" });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+};

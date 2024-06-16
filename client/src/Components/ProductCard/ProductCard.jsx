@@ -4,16 +4,18 @@ import { BiCommentDetail, BiPencil, BiTrash } from "react-icons/bi";
 import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import CartContext from '../../Context/Cart/CartContext';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Swal from "sweetalert2";
 
 import "./ProductCard.scss";
 import ProductServices from '../../Services/ProductsServices';
+import { removeProduct } from '../../redux/reducers/productsReducer';
 
 const ProductCard = ({product}) => {
   const { _id, image, title, initialPrice, discountedPrice, quantity, createdAt }= product;
   const { addToCart } = useContext(CartContext);
-  const user = useSelector((state)=> state.user.user)
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 // Get the current date
 const currentDate = new Date();
 
@@ -42,6 +44,7 @@ const daysDifference = timeDifference / (1000 * 3600 * 24);
          try {
         const response = await ProductServices.deleteProduct(id);
            console.log("response", response);
+           dispatch(removeProduct({ productId: "64a0833c0f5f67b41347834d" }));
            Swal.fire({
              title: "Produit supprimé !",
              icon:"success",
@@ -74,7 +77,8 @@ const daysDifference = timeDifference / (1000 * 3600 * 24);
         </Link>
       </div>
       
-      <div className="admin-options">
+      {
+        user && user.savedUser.isAdmin && <div className="admin-options">
         <div className="delete" onClick={()=> deleteProductById(_id)}>
           <BiTrash color='#fff' size={15}/>
         </div>
@@ -84,6 +88,7 @@ const daysDifference = timeDifference / (1000 * 3600 * 24);
         </div>
         </Link>
       </div>
+      }
     </div>
   );
 }

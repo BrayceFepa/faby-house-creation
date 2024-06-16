@@ -32,6 +32,9 @@ import AdminUsers from "./Components/AdminComponents/AdminUsers/AdminUsers";
 import AdminHone from "./Components/AdminComponents/AdminHone/AdminHone";
 import ListProducts from "./Components/AdminComponents/AdminProducts/ListProducts/ListProducts";
 import EditProduct from "./Components/AdminComponents/AdminProducts/EditProduct/EditProduct";
+import { Helmet } from "react-helmet";
+import ListCategories from "./Components/AdminComponents/AdminCategories/ListCategories/ListCategories";
+import EditCategory from "./Components/AdminComponents/AdminCategories/EditCategory/EditCategory";
 
 const Layout = () => {
   const cartRef = useRef(null);
@@ -176,6 +179,22 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/adminfhc/listcategories",
+        element: (
+          // <AdminLayout>
+          <ListCategories />
+          //{/* </AdminLayout> */}
+        ),
+      },
+      {
+        path: "/adminfhc/editcategory/:categoryId",
+        element: (
+          // <AdminLayout>
+          <EditCategory />
+          //{/* </AdminLayout> */}
+        ),
+      },
+      {
         path: "/adminfhc/formations",
         element: (
           // <AdminLayout>
@@ -204,6 +223,17 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
+      <Helmet>
+        <title>Faby House Creation</title>
+        <meta
+          name="description"
+          content="Accéssoires et vêtements de mode Africaine"
+        ></meta>
+        <meta
+          name="keywords"
+          content="Mode, Femme Africaine, Accéssoire, chapeau, femme, crinolline, paille française, foulard nigerien, robe, mariage, afrique"
+        ></meta>
+      </Helmet>
       <FetchDataLayout>
         <RouterProvider router={router} />
       </FetchDataLayout>

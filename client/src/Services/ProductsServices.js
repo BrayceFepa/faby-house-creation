@@ -20,6 +20,9 @@ const ProductServices = {
   updateProduct(id, data) {
     return requests.put(`/products/${id}`, data);
   },
+  createProduct(data) {
+    return requests.post(`/products/add`, data);
+  },
 };
 
 export default ProductServices;

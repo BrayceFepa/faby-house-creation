@@ -92,7 +92,9 @@ const EditProduct = () => {
             onChange={handleChange}
             placeholder="Image"
           />
-        
+        {
+            <div style={{ height:"40px", width:"40px", padding:"5px" }}><img alt="product-pic" src={formData.image} style={{ height:"100%", width:"100%", objectFit:"cover" }}	/></div>
+        }
         </div>
         
         <div className="form_control">
@@ -108,6 +110,18 @@ const EditProduct = () => {
             <option value="Categ3">Categ 3</option>
           </select>
          
+        </div>
+        <div className="form_control">
+       
+          <select
+            name="status"
+            value={formData.status}
+            onChange={handleChange}
+            placeholder="Status"
+          >
+            <option>Choisir un status</option>
+            {[{title:"Afficher", value: "Show"},{title:"Cacher", value: "Hide"},].map(status => <option value={status.value} key={status.value}>{status.title}</option>)}
+          </select>
         </div>
         
         <div className="form_control">
